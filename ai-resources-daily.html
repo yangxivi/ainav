@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>免费AI资源导航</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<style>
+  :root{
+    --bg:#eef1f6;
+    --surface:#f7f7f7;
+    --card:#ffffff;
+    --ink:#1f2937;
+    --ink2:#6b7280;
+    --line:#e5e5e5;
+    --line2:#d0d0d0;
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.04);
+    --shadow-hover:0 10px 28px rgba(0,0,0,.08);
+    --c-week:#e23b3b;
+    --c-month:#f0922b;
+    --c-year:#2ea3e0;
+    --c-limit:#9b5de5;
+    --c-free:#16a571;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);margin:0;line-height:1.55;
+    -webkit-font-smoothing:antialiased;padding-bottom:78px;
+  }
+  /* 动态背景层（最底层，铺满全屏） */
+  .bg-anim{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+  /* 顶部栏 */
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);}
+  .topbar-inner{max-width:1200px;margin:0 auto;padding:13px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:13px;}
+  .brand .logo{width:40px;height:40px;border-radius:0;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;box-shadow:none;border:1px solid var(--line);flex-shrink:0;}
+  .brand .logo img{width:100%;height:100%;object-fit:cover;}
+  .brand h1{font-size:18px;margin:0;font-weight:800;letter-spacing:.5px;line-height:1.3;}
+  .brand .sub{font-size:12px;color:var(--ink2);margin-top:2px;display:flex;align-items:center;gap:6px;line-height:1.4;}
+  .auto-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;
+    color:#3a8f6c;background:#e9f5ef;border:1px solid #baddcd;padding:1px 7px;border-radius:0;}
+  .auto-badge .dot{width:6px;height:6px;border-radius:50%;background:#3a8f6c;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .meta{display:flex;align-items:center;gap:14px;font-size:12.5px;color:var(--ink2);flex-wrap:wrap;}
+  .meta b{color:var(--ink);font-weight:700;}
+  .legend{display:flex;gap:7px;flex-wrap:wrap;}
+  .legend span{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--ink2);}
+  .legend i{width:9px;height:9px;border-radius:0;display:inline-block;}
+
+  .wrap{max-width:1200px;margin:0 auto;padding:22px 22px 40px;position:relative;z-index:1;}
+
+  /* 分类大卡片：无圆角，细线包裹 */
+  .section{margin-bottom:28px;scroll-margin-top:70px;background:var(--surface);
+    border:1px solid var(--line);border-radius:0;padding:0;box-shadow:var(--shadow);}
+  .sec-head{display:flex;align-items:center;gap:10px;padding:16px 20px;
+    border-bottom:1px solid var(--line);background:var(--card);}
+  .sec-head .ic{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--accent);}
+  .sec-head .ic svg,.tab .ti svg{width:100%;height:100%;display:block;}
+  .sec-head .name{font-size:15.5px;font-weight:800;}
+  .sec-head .count{margin-left:auto;font-size:12px;font-weight:700;color:var(--card);
+    background:var(--accent);padding:3px 10px;border-radius:0;}
+  .sec-head .hint{font-size:11.5px;color:var(--ink2);margin-left:6px;}
+
+  /* 骨架屏 */
+  .section.skeleton{background:var(--surface);padding-bottom:0;}
+  .skeleton .sec-head{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:0;}
+  .skeleton .sh-line{height:22px;border-radius:0;width:160px;
+    background:linear-gradient(90deg,#e5e0d5 25%,#f4f0e8 50%,#e5e0d5 75%);background-size:200% 100%;
+    animation:shimmer 1.4s infinite;}
+  .skeleton-card{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:18px 16px;display:flex;flex-direction:column;gap:12px;}
+  .sk{border-radius:0;
+    background:linear-gradient(90deg,#e5e0d5 25%,#f4f0e8 50%,#e5e0d5 75%);background-size:200% 100%;
+    animation:shimmer 1.4s infinite;}
+  .sk-title{width:40px;height:40px;}
+  .sk-text1{width:70%;height:12px;}.sk-text2{width:55%;height:12px;}.sk-text3{width:40%;height:12px;}
+  .sk-btn{height:30px;width:100%;margin-top:auto;}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .fade-out{opacity:0;transition:opacity .25s ease;pointer-events:none;}
+
+  /* 4×4 栅格：卡片无圆角、无线阴影，用细线分隔 */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .card{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:18px 16px;display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;
+    transition:background .15s ease,transform .16s ease;min-height:180px;}
+  .card:nth-child(4n){border-right:none;}
+  .card:hover{background:#fdfcfa;transform:translateY(-2px);box-shadow:var(--shadow-hover);z-index:1;}
+
+  /* 卡片内部栅格 */
+  .card .card-head{display:flex;align-items:flex-start;gap:10px;}
+  .card .ava{width:40px;height:40px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;border:1px solid var(--line);background:#fff;position:relative;}
+  .card .ava .favicon{width:100%;height:100%;object-fit:contain;padding:4px;background:#fff;}
+  .card .ava .fallback{display:block;width:100%;height:100%;object-fit:contain;padding:3px;background:#fff;}
+  .card .title-wrap{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+  .card .title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+
+  .card .nm{font-size:14.5px;font-weight:800;line-height:1.25;flex:1;min-width:0;}
+  .card .exp{flex:0 0 auto;font-size:10px;font-weight:800;color:var(--accent);white-space:nowrap;
+    border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));padding:2px 7px;background:#fff;}
+  .card .tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{font-size:10px;font-weight:700;padding:1px 6px;line-height:1.6;}
+  .tag.pf{color:#4b5563;background:#f4f2ee;border:1px solid var(--line);}
+  .tag.tp{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,#fff);
+    border:1px solid color-mix(in srgb,var(--accent) 28%,#fff);}
+  .card .ds{font-size:12.5px;color:var(--ink2);line-height:1.6;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:58px;}
+  .card .get{margin-top:auto;width:100%;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+    color:var(--card);background:var(--accent);border:none;border-radius:0;padding:8px 10px;cursor:pointer;
+    transition:filter .15s;justify-content:center;}
+  .card .get:hover{filter:brightness(1.15);}
+  .card .get .arr{margin-left:auto;font-weight:900;}
+  .card.hidden{display:none;}
+  .card.placeholder{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:none;opacity:.7;}
+  .card.placeholder .placeholder-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+  .card.placeholder .placeholder-dots{font-size:22px;letter-spacing:3px;color:var(--line2);line-height:1;}
+  .card.placeholder .placeholder-text{font-size:12.5px;font-weight:700;color:#c1c1c1;}
+
+  .more{grid-column:1 / -1;justify-self:stretch;border:none;border-top:1px dashed var(--line2);
+    color:var(--ink2);background:transparent;font-weight:700;font-size:13px;padding:13px;cursor:pointer;
+    transition:.15s;text-align:center;}
+  .more:hover{color:var(--accent);background:color-mix(in srgb,var(--accent) 4%,transparent);}
+
+  /* 浮动返回顶部 */
+  .totop{position:fixed;right:20px;bottom:92px;z-index:70;width:44px;height:44px;border-radius:0;
+    background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-hover);
+    cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;
+    transition:opacity .2s,transform .2s;}
+  .totop:hover{transform:translateY(-2px);color:var(--c-free);}
+
+  /* 底部菜单栏 */
+  .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:65;background:#fff;
+    border-top:1px solid var(--line);}
+  .tabbar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:0;
+    padding:0 22px;overflow-x:auto;justify-content:space-evenly;}
+  .tab{flex:1 1 0;min-width:0;padding:10px 2px;cursor:pointer;
+    font-size:12px;font-weight:700;color:var(--ink2);transition:.15s;
+    border:none;border-bottom:2px solid transparent;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:2px;position:relative;}
+  .tab .ti{width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:inherit;flex-shrink:0;}
+  .tab .ti svg{width:100%;height:100%;display:block;}
+  .tab > span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+  .tab:not(.active):hover{background:rgba(0,0,0,.03);}
+  .tab.active{color:#fff;background:var(--accent);border-bottom-color:var(--accent);}
+  .tab.active .ti svg{stroke:#fff;}
+
+  /* 领取弹窗 */
+  .modal-backdrop{position:fixed;inset:0;z-index:110;background:rgba(40,32,24,.5);
+    display:none;align-items:center;justify-content:center;padding:18px;
+    opacity:0;transition:opacity .2s ease;}
+  .modal-backdrop.show{display:flex;opacity:1;}
+  .modal{width:100%;max-width:520px;background:var(--surface);border-radius:0;box-shadow:var(--shadow-hover);
+    overflow:hidden;transform:translateY(10px);transition:transform .2s ease;border:1px solid var(--line2);}
+  .modal-backdrop.show .modal{transform:translateY(0);}
+  .modal-head{display:flex;align-items:center;gap:10px;padding:16px 18px 14px;
+    border-bottom:1px solid var(--line);background:var(--card);}
+  .modal-head .ic{font-size:22px;width:38px;height:38px;overflow:hidden;
+    background:color-mix(in srgb,var(--mcolor) 12%,#fff);display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);position:relative;}
+  .modal-head .ic .favicon{width:100%;height:100%;object-fit:contain;padding:3px;background:#fff;}
+  .modal-head .ic .fallback{display:block;width:100%;height:100%;object-fit:contain;padding:3px;background:#fff;}
+  .modal-head .tt{flex:1;}
+  .modal-head .tt h3{margin:0;font-size:16px;font-weight:800;}
+  .modal-head .tt p{margin:2px 0 0;font-size:12px;color:var(--ink2);}
+  .modal-head .close{width:32px;height:32px;border-radius:0;border:1px solid var(--line);background:#fff;
+    cursor:pointer;font-size:18px;color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .modal-head .close:hover{background:#f3f4f6;color:var(--ink);}
+  .modal-body{padding:16px 18px 20px;}
+  .modal-body .exp{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;
+    color:var(--mcolor);background:color-mix(in srgb,var(--mcolor) 10%,#fff);border:1px solid color-mix(in srgb,var(--mcolor) 30%,#fff);
+    padding:3px 10px;border-radius:0;margin-bottom:14px;}
+  .steps{margin:0 0 18px;padding:0;list-style:none;}
+  .steps li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink);margin-bottom:10px;}
+  .steps li:last-child{margin-bottom:0;}
+  .steps .num{flex:0 0 22px;height:22px;display:flex;align-items:center;justify-content:center;
+    background:var(--mcolor);color:#fff;font-size:11px;font-weight:800;margin-top:1px;}
+  .steps .txt{color:var(--ink2);line-height:1.55;}
+  .link-wrap{background:var(--card);border:1px solid var(--line);border-radius:0;padding:14px;}
+  .link-wrap .lb{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .link-row{display:flex;gap:8px;}
+  .link-row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:0;padding:9px 11px;font-size:13px;color:var(--ink);background:#fff;}
+  .link-row button{white-space:nowrap;border:none;border-radius:0;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;}
+  .btn-copy{background:var(--mcolor);color:#fff;}
+  .btn-copy:hover{filter:brightness(1.07);}
+  .btn-open{background:#f1f5f9;color:#334155;border:1px solid #e2e8f0;}
+  .btn-open:hover{background:#e2e8f0;}
+  .copy-toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%) translateY(10px);
+    background:rgba(31,41,55,.9);color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:0;
+    opacity:0;pointer-events:none;transition:.2s;z-index:120;}
+  .copy-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ============ 响应式：电脑/笔记本/平板/手机 ============ */
+  /* 笔记本小屏：4 列收窄边距 */
+  @media (max-width:1200px){
+    .wrap{padding:20px 18px 40px;}
+  }
+  /* 平板（横屏）：3 列 */
+  @media (max-width:1024px){
+    .wrap{padding:18px 16px 40px;}
+    .grid{grid-template-columns:repeat(3,1fr);}
+    .card:nth-child(4n){border-right:1px solid var(--line);}
+    .card:nth-child(3n){border-right:none;}
+    .sec-head .hint{display:none;}
+  }
+  /* 平板（竖屏）/ 大手机：2 列 */
+  @media (max-width:768px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .card:nth-child(3n){border-right:1px solid var(--line);}
+    .card:nth-child(2n){border-right:none;}
+    .sec-head{flex-wrap:wrap;gap:6px 10px;padding:14px 16px;}
+    .topbar-inner{padding:11px 14px;}
+    .meta{width:100%;justify-content:flex-start;order:3;font-size:11.5px;}
+    .legend{font-size:10.5px;gap:6px;}
+  }
+  /* 手机：2 列紧凑 + 顶部栏堆叠 */
+  @media (max-width:560px){
+    .brand h1{font-size:16px;}
+    .brand .sub{font-size:11px;}
+    .card{padding:14px 12px;min-height:168px;gap:8px;}
+    .card .nm{font-size:13.5px;}
+    .card .ds{font-size:11.5px;min-height:46px;}
+    .card .get{font-size:11.5px;padding:7px 8px;}
+    .tab{padding:8px 2px;font-size:11px;}
+    .tab .ti{width:16px;height:16px;}
+  }
+  /* 超小手机：2 列极限紧凑 */
+  @media (max-width:400px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:0;}
+    .card{padding:12px 9px;min-height:158px;}
+    .card .ava{width:30px;height:30px;}
+    .card .ds{font-size:11px;min-height:42px;}
+  }
+  /* 弹窗在窄屏优化 */
+  @media (max-width:640px){
+    .modal-head .tt h3{font-size:14px;}
+    .link-row{flex-wrap:wrap;}
+    .link-row input{width:100%;}
+  }
+</style>
+</head>
+<body>
+  <!-- 动态背景层：带 SMIL 动画的 SVG，铺满全屏、置于最底层 -->
+  <svg class="bg-anim" version="1.1" baseProfile="full" width="100%" height="100%"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+    <rect x="1300" y="400" rx="40" ry="40" width="300" height="300" stroke="#4954e6" fill="#4954e6">
+      <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="35s" type="rotate" from="0 1450 550" to="360 1450 550" repeatCount="indefinite" />
+    </rect>
+    <path d="M 100 350 A 150 150 0 1 1 400 350 Q400 370 380 370 L 250 370 L 120 370 Q100 370 100 350" stroke="rgb(253, 214, 99)" fill="rgb(253, 214, 99)">
+      <animateMotion path="M 800 -200 L 800 -300 L 800 -200" dur="20s" begin="0s" repeatCount="indefinite" />
+      <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="30s" type="rotate" values="0 210 530 ; -30 210 530 ; 0 210 530" keyTimes="0 ; 0.5 ; 1" repeatCount="indefinite" />
+    </path>
+    <circle cx="200" cy="150" r="20" stroke="#4954e6" fill="#4954e6">
+      <animateMotion path="M 0 0 L 40 20 Z" dur="5s" repeatCount="indefinite" />
+    </circle>
+    <path d="M 165 580 L 270 580 Q275 578 270 570 L 223 483 Q220 480 217 483 L 165 570 Q160 578 165 580" stroke="rgb(238, 103, 92)" fill="rgb(238, 103, 92)">
+      <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="35s" type="rotate" from="0 210 530" to="360 210 530" repeatCount="indefinite" />
+    </path>
+    <circle cx="1200" cy="600" r="30" stroke="rgb(241, 243, 244)" fill="rgb(241, 243, 244)">
+      <animateMotion path="M 0 0 L -20 40 Z" dur="9s" repeatCount="indefinite" />
+    </circle>
+    <path d="M 100 350 A 40 40 0 1 1 180 350 L 180 430 A 40 40 0 1 1 100 430 Z" stroke="rgb(241, 243, 244)" fill="rgb(241, 243, 244)">
+      <animateMotion path="M 140 390 L 180 360 L 140 390" dur="20s" begin="0s" repeatCount="indefinite" />
+      <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="30s" type="rotate" values="0 140 390; -60 140 390; 0 140 390" keyTimes="0 ; 0.5 ; 1" repeatCount="indefinite" />
+    </path>
+    <rect x="400" y="600" rx="40" ry="40" width="100" height="100" stroke="rgb(129, 201, 149)" fill="rgb(129, 201, 149)">
+      <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="35s" type="rotate" from="-30 550 750" to="330 550 750" repeatCount="indefinite" />
+    </rect>
+  </svg>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo"><img src="logo.jpg" alt="免费AI资源导航" /></div>
+        <div>
+          <h1>免费AI资源导航</h1>
+          <div class="sub">
+            <span class="auto-badge"><span class="dot"></span>每日自动更新</span>
+            按到期紧迫度智能排序
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <span>更新：<b id="upd">—</b></span>
+        <span>资源：<b id="total">0</b></span>
+        <div class="legend">
+          <span><i style="background:var(--c-week)"></i>本周</span>
+          <span><i style="background:var(--c-month)"></i>本月</span>
+          <span><i style="background:var(--c-year)"></i>本年</span>
+          <span><i style="background:var(--c-limit)"></i>限时</span>
+          <span><i style="background:var(--c-free)"></i>长期</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="app"></main>
+
+
+  <button class="totop" id="totop" title="返回顶部">↑</button>
+
+  <nav class="tabbar">
+    <div class="tabbar-inner" id="tabbar"></div>
+  </nav>
+
+  <!-- 领取弹窗 -->
+  <div class="modal-backdrop" id="modalBack">
+    <div class="modal" id="modal">
+      <div class="modal-head">
+        <div class="ic" id="mIcon"><img class="fallback" src="logo.jpg" alt="" style="display:block" /></div>
+        <div class="tt">
+          <h3 id="mTitle">资源名称</h3>
+          <p id="mSub">平台 · 类型 · 到期时间</p>
+        </div>
+        <button class="close" id="mClose">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="exp" id="mExp">永久</div>
+        <ol class="steps" id="mSteps"></ol>
+        <div class="link-wrap">
+          <div class="lb">🔗 官方领取地址</div>
+          <div class="link-row">
+            <input id="mUrl" type="text" readonly value="" />
+            <button class="btn-copy" id="mCopy">复制链接</button>
+            <button class="btn-open" id="mOpen">打开官网</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copy-toast" id="copyToast">链接已复制到剪贴板</div>
+
+<script>
+const ICONS = {
+  week:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  month:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  year:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="14" r=".5" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r=".5" fill="currentColor" stroke="none"/><circle cx="16" cy="14" r=".5" fill="currentColor" stroke="none"/><circle cx="8" cy="18" r=".5" fill="currentColor" stroke="none"/><circle cx="12" cy="18" r=".5" fill="currentColor" stroke="none"/><circle cx="16" cy="18" r=".5" fill="currentColor" stroke="none"/></svg>`,
+  limit:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>`,
+  free:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 5-5"/></svg>`
+};
+const CATS = [
+  { key:"week",  name:"本周到期", icon:ICONS.week,  color:"var(--c-week)",  hint:"7 天内截止" },
+  { key:"month", name:"本月到期", icon:ICONS.month, color:"var(--c-month)", hint:"30 天内截止" },
+  { key:"year",  name:"本年到期", icon:ICONS.year,  color:"var(--c-year)",  hint:"今年内截止" },
+  { key:"limit", name:"限时免费", icon:ICONS.limit, color:"var(--c-limit)", hint:"活动期内有效" },
+  { key:"free",  name:"长期免费", icon:ICONS.free,  color:"var(--c-free)",  hint:"长期/永久免费" },
+];
+
+/* 常见资源真实官网地址（自动化落地后可完全替换为任务输出） */
+const URLS = {
+  "DeepSeek 对话":"https://chat.deepseek.com",
+  "DeepSeek API 赠送":"https://platform.deepseek.com",
+  "通义千问网页":"https://tongyi.aliyun.com",
+  "阿里百炼试用包":"https://bailian.aliyun.com",
+  "通义万相免费":"https://tongyi.aliyun.com/wanxiang",
+  "通义听悟":"https://tingwu.aliyun.com",
+  "通义灵码":"https://tongyi.aliyun.com/lingma",
+  "文心一言基础":"https://yiyan.baidu.com",
+  "百度文心额度":"https://yiyan.baidu.com",
+  "文心会员体验":"https://yiyan.baidu.com",
+  "豆包 App":"https://www.doubao.com",
+  "豆包会员试用":"https://www.doubao.com",
+  "Kimi 网页":"https://kimi.moonshot.cn",
+  "月之暗面 Kimi":"https://kimi.moonshot.cn",
+  "Kimi 智能体":"https://kimi.moonshot.cn",
+  "元宝 App":"https://yuanbao.tencent.com",
+  "腾讯元宝活动":"https://yuanbao.tencent.com",
+  "HY3 限免延长":"https://hunyuan.tencent.com",
+  "腾讯云 TokenHub":"https://cloud.tencent.com",
+  "CodeBuddy":"https://codebuddy.cn",
+  "WorkBuddy 限免":"https://www.workbuddy.cn",
+  "腾讯会议 AI":"https://meeting.tencent.com",
+  "飞书妙记":"https://www.feishu.cn/product/minutes",
+  "飞书智能伙伴":"https://www.feishu.cn",
+  "讯飞星火基础":"https://xinghuo.xfyun.cn",
+  "讯飞星火体验":"https://xinghuo.xfyun.cn",
+  "智谱清言基础":"https://chatglm.cn",
+  "智谱 BigModel":"https://open.bigmodel.cn",
+  "百川基础":"https://www.baichuan-ai.com/chat",
+  "百川智能试用":"https://www.baichuan-ai.com/chat",
+  "零一万物基础":"https://www.01.ai",
+  "零一万物包":"https://www.01.ai",
+  "Ollama 本地":"https://ollama.com",
+  "LM Studio":"https://lmstudio.ai",
+  "HuggingFace":"https://huggingface.co",
+  "Civitai":"https://civitai.com",
+  "Google AI Studio":"https://aistudio.google.com",
+  "Claude 免费档":"https://claude.ai",
+  "Gemini 试用":"https://gemini.google.com",
+  "ChatGPT 免费":"https://chatgpt.com",
+  "Poe 免费":"https://poe.com",
+  "Perplexity 试用":"https://www.perplexity.ai",
+  "Notion AI":"https://www.notion.so/product/ai",
+  "GitHub Copilot":"https://github.com/features/copilot",
+  "Cursor 教育":"https://cursor.com",
+  "OpenRouter 免费额":"https://openrouter.ai",
+  "SiliconFlow 积分":"https://siliconflow.cn",
+  "硅基流动月包":"https://siliconflow.cn",
+  "火山方舟新人券":"https://www.volcengine.com/product/ark",
+  "MiniMax 免费包":"https://www.minimaxi.com",
+  "海螺 AI 免费":"https://hailuoai.video",
+  "海螺语音":"https://hailuoai.video",
+  "阶跃星辰免费":"https://www.stepfun.com",
+  "商汤日日新":"https://www.sensechat.com.cn",
+  "昆仑天工":"https://www.tiangong.cn",
+  "360 智脑":"https://ai.360.com",
+  "字节 Coze":"https://www.coze.cn",
+  "Coze 海外":"https://www.coze.com",
+  "Dify 云试用":"https://cloud.dify.ai",
+  "魔搭社区":"https://modelscope.cn",
+  "华为盘古试用":"https://pangu.huaweicloud.com",
+  "钉钉 AI 助理":"https://www.dingtalk.com",
+  "可灵 AI 免费":"https://klingai.kuaishou.com",
+  "可灵视频":"https://klingai.kuaishou.com",
+  "即梦 AI 免费":"https://jimeng.jianying.com",
+  "即梦 AI 创作":"https://jimeng.jianying.com",
+  "PixVerse 视频":"https://pixverse.ai",
+  "Luma 视频":"https://lumalabs.ai",
+  "Runway 试用":"https://runwayml.com",
+  "Pika 免费":"https://pika.art",
+  "秘塔 AI":"https://metaso.cn",
+  "万兴喵影 AI":"https://miao.wondershare.cn",
+};
+
+/* ===== 资源清单（每个条目必须有 end 字段，由 JS 自动分类与计算剩余时间） =====
+   end 格式：
+   - "YYYY-MM-DD" 具体到期日
+   - "FREE" 长期/永久免费
+   - "LIMIT" 限时活动（无固定日期的促销）
+   ic 字段作为 favicon 加载失败前的 fallback emoji（最终统一显示本站 logo）
+*/
+const RAW = [
+  /* 本周到期 */
+  {nm:"火山方舟新人券",pf:"字节",tp:"算力",ic:"🔋",end:"2026-08-28",ds:"500 万 tokens 大模型体验包，覆盖豆包系列与开源模型，新实名用户可直接领取，有效期短。",get:"实名后领券"},
+  {nm:"阿里百炼试用包",pf:"阿里",tp:"对话",ic:"💬",end:"2026-08-29",ds:"通义千问系列免费额度，含 Qwen3 长上下文，可在控制台一键领取并接入应用。",get:"控制台领取"},
+  {nm:"SiliconFlow 积分",pf:"硅基流动",tp:"算力",ic:"🔋",end:"2026-08-30",ds:"新用户赠 2000 万 tokens，可调用多款开源模型，注册即送，适合个人开发者联调。",get:"注册即送"},
+  {nm:"HY3 限免延长",pf:"腾讯",tp:"对话",ic:"💬",end:"2026-08-31",ds:"腾讯混元 HY3 免费额度延至 2026-08-31，对话与 API 调用全免，覆盖长文本与多模态，适合日常高频使用。",get:"官网登录即享"},
+  {nm:"DeepSeek API 赠送",pf:"深度求索",tp:"对话",ic:"💬",end:"2026-08-31",ds:"新注册赠 10 元余额，官方模型直连稳定，文档完善，适合接入自有产品。",get:"注册充值赠"},
+  {nm:"腾讯云 TokenHub",pf:"腾讯",tp:"算力",ic:"🔋",end:"2026-09-01",ds:"模型调用周卡，多模型统一入口，按量计费前先享免费额度，适合短期验证场景。",get:"活动页领取"},
+
+  /* 本月到期 */
+  {nm:"OpenRouter 免费额",pf:"OpenRouter",tp:"对话",ic:"💬",end:"2026-09-05",ds:"免费档含多款开源模型每日调用，无需绑卡，适合轻量集成与多模型对比测试。",get:"注册即享"},
+  {nm:"NSCC 算力券",pf:"NSCC",tp:"算力",ic:"🔋",end:"2026-09-07",ds:"国产算力平台新用户赠券，可用于训练与推理，实名后领取，适合学生与小团队。",get:"实名领取"},
+  {nm:"智谱 BigModel",pf:"智谱",tp:"对话",ic:"💬",end:"2026-09-09",ds:"GLM 系列体验额度，支持长文本与工具调用，控制台直接领取，适合中文场景。",get:"控制台领"},
+  {nm:"MiniMax 免费包",pf:"MiniMax",tp:"对话",ic:"💬",end:"2026-09-10",ds:"abab 模型免费调用档，语音与文本双模态，注册送额度，适合做语音助手。",get:"注册送"},
+  {nm:"月之暗面 Kimi",pf:"Kimi",tp:"对话",ic:"💬",end:"2026-09-12",ds:"长上下文月卡体验，支持超长文档解析，活动页领取，适合研报与合同场景。",get:"活动页"},
+  {nm:"百度文心额度",pf:"百度",tp:"对话",ic:"💬",end:"2026-09-13",ds:"ERNIE 免费调用包，中文理解强，领取中心一键获取，适合国内业务接入。",get:"领取中心"},
+  {nm:"讯飞星火体验",pf:"讯飞",tp:"对话",ic:"💬",end:"2026-09-14",ds:"Spark 免费档对话，语音能力突出，登录即用，适合教育与企业客服。",get:"登录即用"},
+  {nm:"阶跃星辰免费",pf:"阶跃",tp:"对话",ic:"💬",end:"2026-09-15",ds:"Step 系列模型试用，多模态支持好，控制台领取，适合图像理解任务。",get:"控制台"},
+  {nm:"百川智能试用",pf:"百川",tp:"对话",ic:"💬",end:"2026-09-16",ds:"Baichuan 免费调用，中文基座扎实，注册即用，适合本地化部署前验证。",get:"注册"},
+  {nm:"零一万物包",pf:"零一",tp:"对话",ic:"💬",end:"2026-09-17",ds:"Yi 系列免费额度，长上下文表现优秀，官网领取，适合知识库问答。",get:"官网领"},
+  {nm:"商汤日日新",pf:"商汤",tp:"对话",ic:"💬",end:"2026-09-18",ds:"SenseNova 体验，视觉与语言兼顾，实名领取，适合多模态应用。",get:"实名"},
+  {nm:"昆仑天工",pf:"昆仑",tp:"对话",ic:"💬",end:"2026-09-19",ds:"天工大模型免费档，搜索增强能力强，登录即用，适合信息检索场景。",get:"登录"},
+  {nm:"360 智脑",pf:"360",tp:"对话",ic:"💬",end:"2026-09-20",ds:"免费对话额度，安全合规，网页即用，适合办公辅助与写作。",get:"网页即用"},
+  {nm:"字节 Coze",pf:"字节",tp:"智能体",ic:"🤖",end:"2026-09-21",ds:"Bot 搭建免费额度，可视化编排，注册即用，适合无代码做 AI 助手。",get:"注册"},
+  {nm:"Dify 云试用",pf:"Dify",tp:"智能体",ic:"🤖",end:"2026-09-22",ds:"云端工作流免费档，支持 RAG 与插件，邮箱注册，适合原型搭建。",get:"邮箱注册"},
+  {nm:"硅基流动月包",pf:"硅基流动",tp:"算力",ic:"🔋",end:"2026-09-23",ds:"月度免费 tokens，模型齐全，领券即用，适合稳定期的小流量服务。",get:"领券"},
+  {nm:"通义万相免费",pf:"阿里",tp:"绘图",ic:"🎨",end:"2026-09-24",ds:"文生图免费额度，风格多样，控制台领取，适合做封面与素材。",get:"控制台"},
+  {nm:"腾讯元宝活动",pf:"腾讯",tp:"对话",ic:"💬",end:"2026-09-25",ds:"会员体验卡限时送，多模型切换，活动页领取，适合体验高级能力。",get:"活动页"},
+  {nm:"魔搭社区",pf:"阿里",tp:"算力",ic:"🔋",end:"2026-09-26",ds:"ModelScope 免费推理，模型海量，登录即用，适合科研与实验。",get:"登录"},
+  {nm:"飞书智能伙伴",pf:"飞书",tp:"智能体",ic:"🤖",end:"2026-09-26",ds:"企业版体验，集成文档与表格，邀请码开通，适合团队提效。",get:"邀请码"},
+  {nm:"钉钉 AI 助理",pf:"钉钉",tp:"智能体",ic:"🤖",end:"2026-09-26",ds:"免费助理额度，对接 OA 流程，组织开通即用，适合企业内部。",get:"组织开通"},
+  {nm:"华为盘古试用",pf:"华为",tp:"对话",ic:"💬",end:"2026-09-26",ds:"Pangu 体验包，行业模型丰富，实名领取，适合政企场景验证。",get:"实名"},
+
+  /* 本年到期 */
+  {nm:"WorkBuddy 限免",pf:"腾讯",tp:"智能体",ic:"🤖",end:"2026-10-31",ds:"当前限免至 2026-10-31，自动化与多工具调用，活动页领取体验。",get:"活动页"},
+  {nm:"文心会员体验",pf:"百度",tp:"对话",ic:"💬",end:"2026-10-31",ds:"月度体验卡，高级模型可用，领取中心获取，适合短期重度使用。",get:"领取中心"},
+  {nm:"豆包会员试用",pf:"字节",tp:"对话",ic:"💬",end:"2026-11-30",ds:"7 天会员体验，多模态丰富，App 内领取，适合体验高级能力。",get:"App 内"},
+  {nm:"Gemini 试用",pf:"Google",tp:"对话",ic:"💬",end:"2026-11-30",ds:"Advanced 限时体验，多模态强，谷歌账号登录，适合创意生产。",get:"谷歌账号"},
+  {nm:"GitHub Copilot",pf:"GitHub",tp:"编程",ic:"💻",end:"2026-12-31",ds:"学生包一年免费，编辑器内 AI 补全与对话，edu 认证后畅用，开发利器。",get:"学生认证"},
+  {nm:"Cursor 教育",pf:"Cursor",tp:"编程",ic:"💻",end:"2026-12-31",ds:"教育优惠全年订阅，多模型切换，edu 邮箱申请，适合重度编码。",get:"edu 邮箱"},
+  {nm:"Claude 免费档",pf:"Anthropic",tp:"对话",ic:"💬",end:"2026-12-31",ds:"网页与 App 基础对话，长文本优秀，注册即用，适合写作与审阅。",get:"注册即用"},
+  {nm:"通义灵码",pf:"阿里",tp:"编程",ic:"💻",end:"2026-12-31",ds:"IDE 插件免费补全，支持多种编辑器，安装即享，适合日常开发。",get:"安装即享"},
+  {nm:"CodeBuddy",pf:"腾讯",tp:"编程",ic:"💻",end:"2026-12-31",ds:"免费 AI 编程助手，对话与生成一体，登录即用，适合国内开发者。",get:"登录"},
+  {nm:"可灵 AI 免费",pf:"快手",tp:"视频",ic:"🎬",end:"2026-12-31",ds:"视频生成免费档，画质优秀，注册即用，适合短视频创作。",get:"注册"},
+  {nm:"即梦 AI 免费",pf:"字节",tp:"绘图",ic:"🎨",end:"2026-12-31",ds:"文生图与视频免费，风格潮流，登录即用，适合创意设计。",get:"登录"},
+  {nm:"海螺 AI 免费",pf:"MiniMax",tp:"语音",ic:"🎙️",end:"2026-12-31",ds:"对话与语音免费，音色自然，注册即用，适合配音与陪伴。",get:"登录"},
+
+  /* 限时免费 */
+  {nm:"即梦 AI 创作",pf:"字节",tp:"绘图",ic:"🎨",end:"LIMIT",ds:"活动期文生视频免费，模板丰富，活动页进入即可创作，限时开放。",get:"活动页"},
+  {nm:"可灵视频",pf:"快手",tp:"视频",ic:"🎬",end:"LIMIT",ds:"限时免费生成额度，支持图生视频，注册领取，适合短期限量创作。",get:"注册"},
+  {nm:"海螺语音",pf:"MiniMax",tp:"语音",ic:"🎙️",end:"LIMIT",ds:"配音限时免费，多语种音色，登录即用，适合视频后期。",get:"登录"},
+  {nm:"PixVerse 视频",pf:"PixVerse",tp:"视频",ic:"🎬",end:"LIMIT",ds:"新用户免费积分，特效丰富，邮箱注册，适合社媒短片。",get:"邮箱"},
+  {nm:"Luma 视频",pf:"Luma",tp:"视频",ic:"🎬",end:"LIMIT",ds:"Dream Machine 免费额度，运动自然，注册即用，适合实验。",get:"注册"},
+  {nm:"Runway 试用",pf:"Runway",tp:"视频",ic:"🎬",end:"LIMIT",ds:"Gen 系列试用帧，电影级质感，账号登录，适合专业剪辑。",get:"账号"},
+  {nm:"Pika 免费",pf:"Pika",tp:"视频",ic:"🎬",end:"LIMIT",ds:"视频生成免费档，玩法多样，登录即用，适合趣味创作。",get:"登录"},
+  {nm:"通义听悟",pf:"阿里",tp:"转写",ic:"📝",end:"LIMIT",ds:"会议转写限时免费，多语言识别，App 内使用，适合复盘。",get:"App"},
+  {nm:"腾讯会议 AI",pf:"腾讯",tp:"转写",ic:"📝",end:"LIMIT",ds:"纪要与总结免费，会中自动生成，会员体验开通，适合办公。",get:"会员体验"},
+  {nm:"飞书妙记",pf:"飞书",tp:"转写",ic:"📝",end:"LIMIT",ds:"智能转写免费档，结构化笔记，登录即用，适合团队。",get:"登录"},
+  {nm:"Notion AI",pf:"Notion",tp:"写作",ic:"✍️",end:"LIMIT",ds:"新用户免费期，文档智能生成，注册即用，适合知识管理。",get:"注册"},
+  {nm:"ChatGPT 免费",pf:"OpenAI",tp:"对话",ic:"💬",end:"LIMIT",ds:"GPT 免费档对话，通用能力强，账号登录，适合日常问答。",get:"账号"},
+  {nm:"Perplexity 试用",pf:"Perplexity",tp:"搜索",ic:"🔍",end:"LIMIT",ds:"搜索试用额度，带引用来源，邮箱注册，适合研究。",get:"邮箱"},
+  {nm:"Poe 免费",pf:"Poe",tp:"对话",ic:"💬",end:"LIMIT",ds:"多模型免费档，一键切换，注册即用，适合横向对比。",get:"注册"},
+  {nm:"秘塔 AI",pf:"秘塔",tp:"搜索",ic:"🔍",end:"LIMIT",ds:"搜索与写作免费，无广告干净，登录即用，适合中文检索。",get:"登录"},
+  {nm:"Kimi 智能体",pf:"Kimi",tp:"智能体",ic:"🤖",end:"LIMIT",ds:"智能体免费创建，长上下文支撑，账号登录，适合自动化。",get:"账号"},
+  {nm:"Coze 海外",pf:"字节",tp:"智能体",ic:"🤖",end:"LIMIT",ds:"Bot 免费部署，插件生态丰富，注册即用，适合出海。",get:"注册"},
+  {nm:"万兴喵影 AI",pf:"万兴",tp:"视频",ic:"🎬",end:"LIMIT",ds:"剪辑 AI 免费，自动字幕与特效，安装即用，适合新手。",get:"安装"},
+
+  /* 长期免费 */
+  {nm:"DeepSeek 对话",pf:"深度求索",tp:"对话",ic:"💬",end:"FREE",ds:"官网无限免费对话，推理能力强，网页即用，日常首选。",get:"网页即用"},
+  {nm:"通义千问网页",pf:"阿里",tp:"对话",ic:"💬",end:"FREE",ds:"基础对话免费，多模态支持，登录即用，适合通用问答。",get:"登录"},
+  {nm:"文心一言基础",pf:"百度",tp:"对话",ic:"💬",end:"FREE",ds:"免费对话档，中文优秀，注册即用，适合办公写作。",get:"注册"},
+  {nm:"豆包 App",pf:"字节",tp:"对话",ic:"💬",end:"FREE",ds:"免费 AI 助手，语音与图像齐全，下载即用，移动端友好。",get:"下载"},
+  {nm:"Kimi 网页",pf:"Kimi",tp:"对话",ic:"💬",end:"FREE",ds:"长文免费对话，文档解析强，登录即用，适合研读。",get:"登录"},
+  {nm:"元宝 App",pf:"腾讯",tp:"对话",ic:"💬",end:"FREE",ds:"免费助手，多模型切换，下载即用，适合日常。",get:"下载"},
+  {nm:"讯飞星火基础",pf:"讯飞",tp:"对话",ic:"💬",end:"FREE",ds:"免费对话，语音突出，注册即用，适合语音场景。",get:"注册"},
+  {nm:"智谱清言基础",pf:"智谱",tp:"对话",ic:"💬",end:"FREE",ds:"GLM 免费对话，工具调用稳，登录即用，适合开发。",get:"登录"},
+  {nm:"百川基础",pf:"百川",tp:"对话",ic:"💬",end:"FREE",ds:"免费对话，中文扎实，网页即用，适合验证。",get:"网页"},
+  {nm:"零一万物基础",pf:"零一",tp:"对话",ic:"💬",end:"FREE",ds:"Yi 免费对话，长上下文好，登录即用，适合问答。",get:"登录"},
+  {nm:"Ollama 本地",pf:"Ollama",tp:"算力",ic:"🔋",end:"FREE",ds:"本地模型运行，隐私安全，安装即用，适合离线。",get:"安装"},
+  {nm:"LM Studio",pf:"LM Studio",tp:"算力",ic:"🔋",end:"FREE",ds:"本地推理免费，图形界面，下载即用，适合个人。",get:"下载"},
+  {nm:"HuggingFace",pf:"HF",tp:"算力",ic:"🔋",end:"FREE",ds:"模型社区免费，资源海量，账号登录，适合学习。",get:"账号"},
+  {nm:"Civitai",pf:"Civitai",tp:"绘图",ic:"🎨",end:"FREE",ds:"SD 模型免费，社区活跃，注册即用，适合出图。",get:"注册"},
+  {nm:"Google AI Studio",pf:"Google",tp:"对话",ic:"💬",end:"FREE",ds:"Gemini 免费实验，API 易用，谷歌账号，适合原型。",get:"谷歌账号"},
+];
+
+const MAX = 16; // 4×4
+const app = document.getElementById("app");
+const tabbar = document.getElementById("tabbar");
+
+/* 日期与分类工具 */
+function dayStart(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+const TODAY = dayStart(new Date());
+function parseEnd(s){
+  if(s==="FREE" || s==="LIMIT") return s;
+  return dayStart(new Date(s));
+}
+function daysUntil(end){
+  if(end==="FREE" || end==="LIMIT") return Infinity;
+  return Math.ceil((end - TODAY) / (86400000));
+}
+function classify(end){
+  if(end==="FREE") return "free";
+  if(end==="LIMIT") return "limit";
+  const d = daysUntil(end);
+  if(d<=7) return "week";
+  if(d<=30) return "month";
+  if(end.getFullYear()===TODAY.getFullYear()) return "year";
+  return "limit";
+}
+function fmtExp(end){
+  if(end==="FREE") return "永久";
+  if(end==="LIMIT") return "限时";
+  const d = daysUntil(end);
+  if(d<0) return "已到期";
+  if(d===0) return "今天";
+  if(d===1) return "明天";
+  if(d<=30) return d+"天后";
+  const m=end.getMonth()+1, day=end.getDate();
+  if(m===12 && day===31) return "2026年底";
+  return `${m}月${day}日`;
+}
+
+/* 自动分组并排序 */
+const DATA = {};
+CATS.forEach(c=>DATA[c.key]=[]);
+RAW.forEach(it=>{
+  it._end = parseEnd(it.end);
+  it._exp = fmtExp(it._end);
+  const key = classify(it._end);
+  DATA[key].push(it);
+});
+CATS.forEach(c=>{
+  DATA[c.key].sort((a,b)=>{
+    if(a._end===b._end) return 0;
+    if(a._end==="FREE" || a._end==="LIMIT") return 1;
+    if(b._end==="FREE" || b._end==="LIMIT") return -1;
+    return a._end - b._end;
+  });
+});
+
+let total = 0;
+
+function getUrl(it){
+  if(it.url) return it.url;
+  return URLS[it.nm] || "#";
+}
+
+/* favicon / logo 图标（多源 fallback：DuckDuckGo -> Google -> 官网 /favicon.ico -> 本站 logo） */
+function domainFromUrl(url){
+  if(!url || url==="#") return "";
+  try {
+    const u = new URL(url.startsWith("http") ? url : "https://"+url);
+    return u.hostname.replace(/^www\./, "");
+  } catch { return ""; }
+}
+function faviconSrcs(url, size=64){
+  const d = domainFromUrl(url);
+  if(!d) return [];
+  return [
+    `https://icons.duckduckgo.com/ip3/${encodeURIComponent(d)}.ico`,
+    `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=${size}`,
+    `https://${d}/favicon.ico`
+  ];
+}
+/* 图标策略：默认显示本站黑猫 logo 占位，favicon 加载成功后无缝替换，失败维持黑猫 */
+function iconHtml(it){
+  const ico = encodeURIComponent(getUrl(it));
+  return `<img class="favicon" src="logo.jpg" alt="" data-ico="${ico}">`;
+}
+function setIcon(el, it){
+  const ico = encodeURIComponent(getUrl(it));
+  el.innerHTML = `<img class="favicon" src="logo.jpg" alt="" data-ico="${ico}">`;
+  loadFavicon(el.querySelector("img.favicon"));
+}
+function loadFavicon(img){
+  if(!img) return;
+  const url = decodeURIComponent(img.dataset.ico || "");
+  const srcs = faviconSrcs(url, 64);
+  if(!srcs.length) return; // 维持黑猫占位
+  let i = 0;
+  const tryNext = () => {
+    if(i >= srcs.length) return; // 全部失败 -> 维持黑猫
+    const t = new Image();
+    t.onload = () => { img.src = srcs[i]; };
+    t.onerror = () => { i++; tryNext(); };
+    t.src = srcs[i];
+  };
+  tryNext();
+}
+function preloadFavicons(){
+  document.querySelectorAll(".ava img.favicon, .ic img.favicon").forEach(loadFavicon);
+}
+
+function makeSteps(it){
+  const g = it.get, steps = ["打开下方「官方领取地址」"];
+  if(/注册|账号|邮箱|登录/.test(g)) steps.push("使用邮箱或手机号完成注册/登录");
+  if(/实名|学生|edu/.test(g)) steps.push("按页面要求完成认证（实名 / 学生 / 组织）");
+  if(/控制台|领取中心|活动页/.test(g)) steps.push(`进入「${g.replace(/领取|进入/g,"").trim()}」找到该资源`);
+  if(/下载|安装/.test(g)) steps.push("下载安装对应客户端");
+  if(/邀请码/.test(g)) steps.push("输入有效邀请码并提交");
+  if(/充值赠|充值/.test(g)) steps.push("完成首次充值后自动发放赠送额度");
+  steps.push("按页面提示领取免费额度，即可开始使用");
+  return steps;
+}
+
+function openModal(it, accent){
+  const back = document.getElementById("modalBack");
+  const modal = document.getElementById("modal");
+  const url = getUrl(it);
+  modal.style.setProperty("--mcolor", accent);
+  setIcon(document.getElementById("mIcon"), it, 64);
+  document.getElementById("mTitle").textContent = it.nm;
+  document.getElementById("mSub").textContent = `${it.pf} · ${it.tp} · 到期：${it._exp}`;
+  document.getElementById("mExp").textContent = "⏳ 到期时间：" + it._exp;
+  document.getElementById("mUrl").value = url;
+  const ol = document.getElementById("mSteps");
+  ol.innerHTML = makeSteps(it).map((s,i)=>
+    `<li><span class="num">${i+1}</span><span class="txt">${s}</span></li>`
+  ).join("");
+  document.getElementById("mOpen").onclick = () => {
+    if(url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
+    else alert("暂无官方链接");
+  };
+  document.getElementById("mCopy").onclick = () => copyLink(url);
+  back.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+  document.getElementById("modalBack").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function copyLink(text){
+  if(!text || text==="#") return;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(showCopyToast);
+  } else {
+    const t = document.createElement("textarea"); t.value=text; t.style.position="fixed"; t.style.opacity=0;
+    document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); showCopyToast();
+  }
+}
+function showCopyToast(){
+  const toast = document.getElementById("copyToast");
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"),1600);
+}
+
+document.getElementById("mClose").addEventListener("click", closeModal);
+document.getElementById("modalBack").addEventListener("click", e => { if(e.target.id === "modalBack") closeModal(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+function renderSkeleton(){
+  app.innerHTML = "";
+  CATS.forEach(cat=>{
+    const sec = document.createElement("section");
+    sec.className = "section skeleton";
+    sec.style.setProperty("--accent", cat.color);
+    const skCards = Array(16).fill(`<div class="skeleton-card"><div class="sk sk-title"></div><div class="sk sk-text1"></div><div class="sk sk-text2"></div><div class="sk sk-text3"></div><div class="sk sk-btn"></div></div>`).join("");
+    sec.innerHTML = `<div class="sec-head"><div class="sh-line"></div></div><div class="grid">${skCards}</div>`;
+    app.appendChild(sec);
+  });
+}
+
+function pad(n){ return String(n).padStart(2,"0"); }
+
+function renderReal(){
+  app.innerHTML = "";
+  tabbar.innerHTML = "";
+  total = 0;
+
+  CATS.forEach((cat,idx)=>{
+    const items = DATA[cat.key] || [];
+    total += items.length;
+    const sec = document.createElement("section");
+    sec.className = "section"; sec.id = "sec-"+cat.key;
+    sec.style.setProperty("--accent", cat.color);
+
+    const head = document.createElement("div");
+    head.className = "sec-head";
+    head.innerHTML = `<span class="ic">${cat.icon}</span>
+      <span class="name">${cat.name}</span>
+      <span class="count">${items.length} 项</span>
+      <span class="hint">${cat.hint}</span>`;
+    sec.appendChild(head);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+
+    const visibleCount = Math.min(items.length, MAX);
+    const rowCount = Math.ceil(visibleCount / 4);
+    const fillTo = rowCount * 4;
+
+    for(let i=0;i<Math.max(fillTo, items.length);i++){
+      if(i < items.length){
+        const it = items[i];
+        const card = document.createElement("div");
+        card.className = "card" + (i>=MAX ? " hidden":"");
+        if(i>=MAX) card.dataset.fold = "1";
+        card.innerHTML = `
+          <div class="card-head">
+            <div class="ava">${iconHtml(it,64)}</div>
+            <div class="title-wrap">
+              <div class="title-row">
+                <div class="nm">${it.nm}</div>
+                <span class="exp">${it._exp}</span>
+              </div>
+              <div class="tags"><span class="tag pf">${it.pf}</span><span class="tag tp">${it.tp}</span></div>
+            </div>
+          </div>
+          <div class="ds">${it.ds}</div>
+          <button class="get">怎么领取<span class="arr">→</span></button>`;
+        card.querySelector(".get").addEventListener("click",()=> openModal(it, cat.color));
+        grid.appendChild(card);
+      } else {
+        const card = document.createElement("div");
+        card.className = "card placeholder";
+        card.innerHTML = `
+          <div class="placeholder-inner">
+            <div class="placeholder-dots">···</div>
+            <div class="placeholder-text">资源待更新</div>
+          </div>`;
+        grid.appendChild(card);
+      }
+    }
+
+    if(items.length > MAX){
+      const more = document.createElement("button");
+      more.className = "more";
+      more.textContent = `更多 ${items.length-MAX} 项 ▾`;
+      let open=false;
+      more.addEventListener("click",()=>{
+        open=!open;
+        grid.querySelectorAll("[data-fold]").forEach(c=>c.classList.toggle("hidden",!open));
+        more.textContent = open ? `收起 ▴` : `更多 ${items.length-MAX} 项 ▾`;
+      });
+      grid.appendChild(more);
+    }
+    sec.appendChild(grid);
+    app.appendChild(sec);
+
+    const tab = document.createElement("div");
+    tab.className = "tab"; tab.dataset.target = "sec-"+cat.key;
+    tab.style.setProperty("--accent", cat.color);
+    tab.innerHTML = `<span class="ti">${cat.icon}</span><span>${cat.name}</span>`;
+    tab.addEventListener("click",()=>{
+      document.getElementById("sec-"+cat.key).scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    tabbar.appendChild(tab);
+  });
+
+  document.getElementById("total").textContent = total;
+
+  /* 图标：先显示黑猫占位，再异步加载各官网 favicon */
+  preloadFavicons();
+
+  /* 更新时间 */
+  const now = new Date();
+  document.getElementById("upd").textContent = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
+
+  const totop = document.getElementById("totop");
+  window.addEventListener("scroll",()=>{
+    totop.style.display = window.scrollY > 400 ? "flex" : "none";
+  });
+  totop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+  const tabs = [...tabbar.querySelectorAll(".tab")];
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        tabs.forEach(t=>t.classList.toggle("active", t.dataset.target===e.target.id));
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  CATS.forEach(c=>obs.observe(document.getElementById("sec-"+c.key)));
+}
+
+renderSkeleton();
+setTimeout(()=>{
+  app.classList.add("fade-out");
+  setTimeout(()=>{
+    renderReal();
+    app.classList.remove("fade-out");
+  }, 260);
+}, 650);
+</script>
+</body>
+</html>
