@@ -4,7 +4,7 @@
 
 ## 在线地址
 
-https://yangxivi.github.io/ainav/
+https://www.ixivi.cn
 
 ## 特性
 
