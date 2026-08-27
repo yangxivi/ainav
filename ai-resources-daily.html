@@ -434,7 +434,7 @@ const URLS = {
    - "LIMIT" 限时活动（无固定日期的促销）
    ic 字段作为 favicon 加载失败前的 fallback emoji（最终统一显示本站 logo）
 */
-const RAW = [
+const RAW_FALLBACK = [
   /* 本周到期 */
   {nm:"火山方舟新人券",pf:"字节",tp:"算力",ic:"🔋",end:"2026-08-28",ds:"500 万 tokens 大模型体验包，覆盖豆包系列与开源模型，新实名用户可直接领取，有效期短。",get:"实名后领券"},
   {nm:"阿里百炼试用包",pf:"阿里",tp:"对话",ic:"💬",end:"2026-08-29",ds:"通义千问系列免费额度，含 Qwen3 长上下文，可在控制台一键领取并接入应用。",get:"控制台领取"},
@@ -558,21 +558,23 @@ function fmtExp(end){
 
 /* 自动分组并排序 */
 const DATA = {};
-CATS.forEach(c=>DATA[c.key]=[]);
-RAW.forEach(it=>{
-  it._end = parseEnd(it.end);
-  it._exp = fmtExp(it._end);
-  const key = classify(it._end);
-  DATA[key].push(it);
-});
-CATS.forEach(c=>{
-  DATA[c.key].sort((a,b)=>{
-    if(a._end===b._end) return 0;
-    if(a._end==="FREE" || a._end==="LIMIT") return 1;
-    if(b._end==="FREE" || b._end==="LIMIT") return -1;
-    return a._end - b._end;
+function buildData(raw){
+  CATS.forEach(c=>DATA[c.key]=[]);
+  raw.forEach(it=>{
+    it._end = parseEnd(it.end);
+    it._exp = fmtExp(it._end);
+    const key = classify(it._end);
+    DATA[key].push(it);
   });
-});
+  CATS.forEach(c=>{
+    DATA[c.key].sort((a,b)=>{
+      if(a._end===b._end) return 0;
+      if(a._end==="FREE" || a._end==="LIMIT") return 1;
+      if(b._end==="FREE" || b._end==="LIMIT") return -1;
+      return a._end - b._end;
+    });
+  });
+}
 
 let total = 0;
 
@@ -812,13 +814,24 @@ function renderReal(){
 }
 
 renderSkeleton();
-setTimeout(()=>{
-  app.classList.add("fade-out");
+(async ()=>{
+  let raw = RAW_FALLBACK;
+  try {
+    const resp = await fetch('./data.json', {cache:'no-store'});
+    if(resp.ok){
+      const j = await resp.json();
+      if(Array.isArray(j) && j.length) raw = j;
+    }
+  } catch(e){ /* file:// 本地直接打开或网络失败时回退内联示例数据 */ }
+  buildData(raw);
   setTimeout(()=>{
-    renderReal();
-    app.classList.remove("fade-out");
-  }, 260);
-}, 650);
+    app.classList.add("fade-out");
+    setTimeout(()=>{
+      renderReal();
+      app.classList.remove("fade-out");
+    }, 260);
+  }, 650);
+})();
 </script>
 </body>
 </html>
