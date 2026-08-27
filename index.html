@@ -46,6 +46,13 @@
   .auto-badge{display:flex;align-items:center;justify-content:center;gap:4px;font-size:10.5px;font-weight:700;
     color:#3a8f6c;background:#e9f5ef;border:1px solid #baddcd;padding:1px 7px;border-radius:0;width:100%;}
   .auto-badge .dot{width:6px;height:6px;border-radius:50%;background:#3a8f6c;animation:pulse 1.6s infinite;}
+  .search-box{flex:1;max-width:380px;min-width:140px;position:relative;}
+  .search-box input{width:100%;height:34px;padding:0 12px;border:1px solid var(--line);background:var(--card);font-size:13px;color:var(--ink);outline:none;}
+  .search-box input:focus{border-color:#2ea3e0;}
+  .search-empty{position:absolute;top:40px;left:0;background:var(--card);border:1px solid var(--line);padding:8px 14px;font-size:13px;color:var(--ink2);box-shadow:var(--shadow);white-space:nowrap;z-index:70;}
+  .search-empty.hidden{display:none;}
+  .search-match{background:#fffbe6 !important;outline:2px solid #f0922b;outline-offset:-2px;position:relative;z-index:2;}
+  .section.no-match{display:none;}
   .floating-qr{display:none;}
   @media (min-width:1280px){
     .floating-qr{display:block;position:fixed;top:92px;right:max(18px, calc(50vw - 918px));width:300px;background:var(--card);border:1px solid var(--line);padding:0;overflow:hidden;z-index:50;box-shadow:var(--shadow);text-align:center;}
@@ -220,6 +227,7 @@
     .card:nth-child(2n){border-right:none;}
     .sec-head{flex-wrap:wrap;gap:6px 10px;padding:14px 16px;}
     .topbar-inner{padding:11px 14px;}
+    .search-box{order:2;width:100%;max-width:none;margin-top:6px;}
     .meta{width:100%;justify-content:flex-start;order:3;font-size:11.5px;}
     .legend{font-size:10.5px;gap:6px;}
   }
@@ -288,6 +296,10 @@
             <span class="auto-badge"><span class="dot"></span>每日自动更新 按到期时间智能排序</span>
           </div>
         </div>
+      </div>
+      <div class="search-box">
+        <input type="text" id="search" placeholder="搜索资源名称 / 平台 / 简介…" autocomplete="off" />
+        <div id="search-empty" class="search-empty hidden">无收录</div>
       </div>
       <div class="meta">
         <span>更新：<b id="upd">—</b></span>
@@ -773,12 +785,13 @@ function renderReal(){
     if(items.length > MAX){
       const more = document.createElement("button");
       more.className = "more";
+      more.dataset.open = "false";
       more.textContent = `更多 ${items.length-MAX} 项 ▾`;
-      let open=false;
       more.addEventListener("click",()=>{
-        open=!open;
-        grid.querySelectorAll("[data-fold]").forEach(c=>c.classList.toggle("hidden",!open));
-        more.textContent = open ? `收起 ▴` : `更多 ${items.length-MAX} 项 ▾`;
+        const open = more.dataset.open === "true";
+        more.dataset.open = String(!open);
+        grid.querySelectorAll("[data-fold]").forEach(c=>c.classList.toggle("hidden",open));
+        more.textContent = !open ? `收起 ▴` : `更多 ${items.length-MAX} 项 ▾`;
       });
       grid.appendChild(more);
     }
@@ -819,6 +832,70 @@ function renderReal(){
     });
   },{rootMargin:"-45% 0px -50% 0px"});
   CATS.forEach(c=>obs.observe(document.getElementById("sec-"+c.key)));
+  initSearch();
+}
+
+function initSearch(){
+  const input = document.getElementById("search");
+  const empty = document.getElementById("search-empty");
+  if(!input || !empty) return;
+
+  input.addEventListener("input",()=>{
+    const kw = input.value.trim().toLowerCase();
+    const cards = [...document.querySelectorAll(".card:not(.placeholder)")];
+    const sections = [...document.querySelectorAll(".section")];
+    empty.classList.add("hidden");
+
+    if(!kw){
+      cards.forEach(c=>{
+        c.classList.remove("search-match");
+        c.classList.toggle("hidden", c.dataset.fold === "1");
+      });
+      sections.forEach(s=>s.classList.remove("no-match"));
+      document.querySelectorAll(".more").forEach(m=>{
+        m.dataset.open = "false";
+        const count = m.closest(".grid").querySelectorAll("[data-fold]").length;
+        m.textContent = `更多 ${count} 项 ▾`;
+      });
+      return;
+    }
+
+    let matchCount = 0;
+    let firstMatch = null;
+    cards.forEach(c=>{
+      const match = c.innerText.toLowerCase().includes(kw);
+      if(match){
+        c.classList.remove("hidden");
+        c.classList.add("search-match");
+        matchCount++;
+        if(!firstMatch) firstMatch = c;
+      } else {
+        c.classList.add("hidden");
+        c.classList.remove("search-match");
+      }
+    });
+
+    cards.filter(c=>c.classList.contains("search-match") && c.dataset.fold==="1").forEach(c=>{
+      const grid = c.closest(".grid");
+      const more = grid.querySelector(".more");
+      if(more){
+        more.dataset.open = "true";
+        more.textContent = "收起 ▴";
+        grid.querySelectorAll("[data-fold]").forEach(fc=>fc.classList.remove("hidden"));
+      }
+    });
+
+    sections.forEach(sec=>{
+      const hasMatch = sec.querySelector(".card:not(.placeholder):not(.hidden)") !== null;
+      sec.classList.toggle("no-match", !hasMatch);
+    });
+
+    if(matchCount === 0){
+      empty.classList.remove("hidden");
+    } else if(firstMatch){
+      firstMatch.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+  });
 }
 
 renderSkeleton();
