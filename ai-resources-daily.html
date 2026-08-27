@@ -145,6 +145,9 @@
     cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;
     transition:opacity .2s,transform .2s;}
   .totop:hover{transform:translateY(-2px);color:var(--c-free);}
+  @media (min-width:1280px){
+    .totop{right:auto;left:calc(100vw - max(18px, 50vw - 918px) - 300px);}
+  }
 
   /* 底部菜单栏 */
   .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:65;background:#fff;
