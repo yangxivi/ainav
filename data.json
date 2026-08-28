@@ -45,6 +45,16 @@
   "get": "注册充值赠"
  },
  {
+  "nm": "芒果灵创福利周",
+  "pf": "芒果TV",
+  "tp": "绘图",
+  "ic": "🎨",
+  "end": "2026-08-31",
+  "ds": "芒果TV旗下「芒果灵创」福利周，报名 8/25–8/31 全量注册用户无门槛参与，7 款旗舰图片/视频模型（Qwen Image 3.0 Pro、Wan 2.7/3.0 等）7 天免费畅用，平台算力补贴，每天免费生成次数、先到先得。",
+  "get": "活动页报名",
+  "url": "https://aigc.mgtv.com/"
+ },
+ {
   "nm": "腾讯云 TokenHub",
   "pf": "腾讯",
   "tp": "算力",
@@ -522,6 +532,26 @@
   "get": "安装"
  },
  {
+  "nm": "AI21 Labs 免费积分",
+  "pf": "AI21",
+  "tp": "对话",
+  "ic": "💬",
+  "end": "LIMIT",
+  "ds": "AI21 Labs 新用户注册赠 $10 免费积分（无需信用卡），支持 Jamba Mini/Large 等长上下文模型，按用量扣减、用完为止。",
+  "get": "注册即送",
+  "url": "https://www.ai21.com"
+ },
+ {
+  "nm": "Baseten 免费积分",
+  "pf": "Baseten",
+  "tp": "编程",
+  "ic": "💻",
+  "end": "LIMIT",
+  "ds": "Baseten 新用户注册赠 $30 免费积分，可用于部署任意 HuggingFace 模型、按 GPU 计算时间计费，适合自托管推理与微调原型。",
+  "get": "注册即送",
+  "url": "https://baseten.co"
+ },
+ {
   "nm": "DeepSeek 对话",
   "pf": "深度求索",
   "tp": "对话",
@@ -655,5 +685,45 @@
   "end": "FREE",
   "ds": "Gemini 免费实验，API 易用，谷歌账号，适合原型。",
   "get": "谷歌账号"
+ },
+ {
+  "nm": "AtomGit AI（开放原子）",
+  "pf": "开放原子",
+  "tp": "算力",
+  "ic": "🔋",
+  "end": "FREE",
+  "ds": "开放原子旗下 AtomGit AI 新用户赠 1000 万 Tokens（永久），另含 GLM-5/Qwen3.5 三款无限 Token 模型每 24h 免费续期，每月再送 1000 核时免费算力，OpenAI 兼容，适合接 WorkBuddy 等客户端。",
+  "get": "注册即送",
+  "url": "https://atomgit.ai"
+ },
+ {
+  "nm": "百度智能云 苗得 MIAODA",
+  "pf": "百度",
+  "tp": "视频",
+  "ic": "🎬",
+  "end": "FREE",
+  "ds": "百度智能云「苗得 MIAODA」精选 Skill 每日免费额度：视频生成 1 次/天、图像生成 5 次/天、其他 200 次/天，每天 0 点重置不累计，国内直连，免费档优先扣减。",
+  "get": "控制台调用",
+  "url": "https://cloud.baidu.com/"
+ },
+ {
+  "nm": "DeepL 开发者 API",
+  "pf": "DeepL",
+  "tp": "写作",
+  "ic": "✍️",
+  "end": "FREE",
+  "ds": "翻译标杆 DeepL 开发者 API 免费档每月 50 万字符，免信用卡，30+ 语言、译文质量高，适合文档/站点/产品多语本地化，每月自动重置。",
+  "get": "注册即送",
+  "url": "https://www.deepl.com/pro"
+ },
+ {
+  "nm": "Recraft 免费绘图",
+  "pf": "Recraft",
+  "tp": "绘图",
+  "ic": "🎨",
+  "end": "FREE",
+  "ds": "AI 设计利器 Recraft 免费档每日自动发积分（约 30–50/天），栅格 1、矢量 2 积分/张，支持品牌风格集与图标/插画/海报，矢量可直接进 Figma。",
+  "get": "注册即用",
+  "url": "https://recraft.ai"
  }
 ]
