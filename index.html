@@ -116,6 +116,11 @@
   .card .nm{font-size:14.5px;font-weight:800;line-height:1.25;flex:1;min-width:0;}
   .card .exp{flex:0 0 auto;font-size:10px;font-weight:800;color:var(--accent);white-space:nowrap;
     border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));padding:2px 7px;background:#fff;}
+  .card .new-tag{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:800;color:#e53e3e;border:1px solid #e53e3e;border-radius:3px;
+    padding:1px 4px;line-height:1.2;background:#fff;white-space:nowrap;letter-spacing:0;
+    animation:newPulse 1.8s ease-in-out infinite;}
+  @keyframes newPulse{0%,100%{box-shadow:0 0 0 0 rgba(229,62,62,0.0);}50%{box-shadow:0 0 0 3px rgba(229,62,62,0.18);}}
   .card .tags{display:flex;gap:6px;flex-wrap:wrap;}
   .tag{font-size:10px;font-weight:700;padding:1px 6px;line-height:1.6;}
   .tag.pf{color:#4b5563;background:#f4f2ee;border:1px solid var(--line);}
@@ -549,6 +554,7 @@ const tabbar = document.getElementById("tabbar");
 /* 日期与分类工具 */
 function dayStart(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
 const TODAY = dayStart(new Date());
+const TODAY_STR = TODAY.getFullYear()+"-"+String(TODAY.getMonth()+1).padStart(2,"0")+"-"+String(TODAY.getDate()).padStart(2,"0");
 function parseEnd(s){
   if(s==="FREE" || s==="LIMIT") return s;
   return dayStart(new Date(s));
@@ -671,7 +677,8 @@ function openModal(it, accent){
   modal.style.setProperty("--mcolor", accent);
   setIcon(document.getElementById("mIcon"), it, 64);
   document.getElementById("mTitle").textContent = it.nm;
-  document.getElementById("mSub").textContent = `${it.pf} · ${it.tp} · 到期：${it._exp}`;
+  const newBadge = (it.ad && it.ad===TODAY_STR) ? '<span class="new-tag" style="margin-left:6px;" title="今日新增">新</span>' : '';
+  document.getElementById("mSub").innerHTML = `${it.pf} · ${it.tp} · 到期：${it._exp}${newBadge}`;
   document.getElementById("mExp").textContent = "⏳ 到期时间：" + it._exp;
   document.getElementById("mUrl").value = url;
   const ol = document.getElementById("mSteps");
@@ -764,6 +771,7 @@ function renderReal(){
             <div class="title-wrap">
               <div class="title-row">
                 <div class="nm">${it.nm}</div>
+                ${it.ad && it.ad===TODAY_STR ? '<span class="new-tag" title="今日新增">新</span>' : ''}
                 <span class="exp">${it._exp}</span>
               </div>
               <div class="tags"><span class="tag pf">${it.pf}</span><span class="tag tp">${it.tp}</span></div>

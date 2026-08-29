@@ -16,7 +16,8 @@
   "end": "2026-08-30",
   "ds": "昆仑万维 SkyProduction（天工工作台）接入通义万相最新视频模型 Wan 3.0，8/28–8/30 周末面向所有新老/个人企业用户限时全免。支持原生 30 秒单次生成、20 个多模态参考、像素级一致性与精准编辑，8/31 起恢复 0.05 元/秒计费。",
   "get": "官网注册即用",
-  "url": "https://www.skyproduction.cn"
+  "url": "https://www.skyproduction.cn",
+  "ad": "2026-08-29"
  },
  {
   "nm": "DeepSeek API 赠送",
@@ -45,7 +46,8 @@
   "end": "2026-08-31",
   "ds": "智谱 ZCode 周末活动：所有登录用户（含 Coding Plan 订阅）免费领 3 亿 Token 体验额度，仅限 GLM-5.3-Flash（原生多模态、100 万上下文），可搭 Browser Use / Computer Use 操作电脑。周五 20:00 生效、8/31 09:00 到期，每账号限领一次。",
   "get": "客户端活动卡领取",
-  "url": "https://zcode.z.ai"
+  "url": "https://zcode.z.ai",
+  "ad": "2026-08-29"
  },
  {
   "nm": "网易 LobsterAI 积分",
@@ -75,7 +77,8 @@
   "end": "2026-09-06",
   "ds": "GMI Cloud 联合 MiniMax 做 14 天限免（8/24–9/6）：MiniMax-M3、M2.7 文本模型 + Speech-2.8 语音合成 + Music-3.0 音乐生成全部免费调用，OpenAI 兼容、注册免绑卡，也可经 OpenRouter 接入（视频模型 H3 除外）。",
   "get": "注册建 Key",
-  "url": "https://www.gmicloud.ai"
+  "url": "https://www.gmicloud.ai",
+  "ad": "2026-08-29"
  },
  {
   "nm": "NSCC 算力券",
@@ -122,7 +125,8 @@
   "end": "2026-09-10",
   "ds": "腾讯混元 8/28 发布开源旗舰 Hy4-preview（总参 770B / 激活 49B / 1M 上下文），WorkBuddy 国内外版同步首发接入并限免两周至 9/10 23:59。内部盲测均分 2.99/4，略优于 GLM-5.3 与 Kimi K3；已上线 HuggingFace、TokenHub、OpenRouter。",
   "get": "切换模型即享",
-  "url": "https://www.workbuddy.cn"
+  "url": "https://www.workbuddy.cn",
+  "ad": "2026-08-29"
  },
  {
   "nm": "月之暗面 Kimi",
@@ -295,7 +299,8 @@
   "end": "2026-09-30",
   "ds": "腾讯混元 Hy3 免费期再延长一个月至 2026-09-30 23:59，在 WorkBuddy / CodeBuddy 选 Hy3 即不扣积分，每日有免费额度上限、触顶后可用积分续用。",
   "get": "切换模型即享",
-  "url": "https://www.workbuddy.cn"
+  "url": "https://www.workbuddy.cn",
+  "ad": "2026-08-29"
  },
  {
   "nm": "WorkBuddy 限免",
@@ -635,7 +640,8 @@
   "end": "LIMIT",
   "ds": "字节 8/25 发布办公 Agent「豆包工作」，能自主拆任务、操作浏览器与电脑、读写本地文件、跑定时任务并与飞书打通。下载电脑版并用豆包账号登录即限时免费领 30 天标准订阅（价值 68 元），已有会员自动顺延；仅限 Windows / Mac 客户端。",
   "get": "下载电脑版登录",
-  "url": "https://www.doubao.com/work"
+  "url": "https://www.doubao.com/work",
+  "ad": "2026-08-29"
  },
  {
   "nm": "华为云码道 码力续航",
