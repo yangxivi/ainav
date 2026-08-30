@@ -100,7 +100,7 @@
   .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-left:1px solid var(--line);border-top:1px solid var(--line);}
   .card{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
     padding:18px 16px;display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;
-    transition:background .15s ease,transform .16s ease;min-height:180px;min-width:0;}
+    transition:background .15s ease;min-height:180px;min-width:0;overflow:hidden;}
   .card:hover{background:#fdfcfa;box-shadow:var(--shadow-hover);z-index:1;}
 
   /* 卡片内部栅格 */
@@ -225,7 +225,7 @@
     .grid{grid-template-columns:repeat(3,minmax(0,1fr));}
     .sec-head .hint{display:none;}
   }
-  /* 平板（竖屏）/ 大手机：2 列 */
+  /* 平板（竖屏）/ 大手机：2 列紧凑 */
   @media (max-width:768px){
     .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .sec-head{flex-wrap:wrap;gap:6px 10px;padding:14px 16px;}
@@ -234,26 +234,80 @@
     .meta{width:100%;justify-content:flex-start;order:3;font-size:11.5px;}
     .legend{font-size:10.5px;gap:6px;}
   }
-  /* 手机：2 列紧凑 + 顶部栏堆叠 */
+  /* 手机：单列布局 + 整体紧凑自适应 */
   @media (max-width:560px){
-    .brand h1{font-size:16px;}
-    .brand .sub{font-size:11px;}
-    .card{padding:14px 12px;min-height:148px;gap:8px;}
-    .card .nm{font-size:13px;}
-    .card .ds{font-size:11px;min-height:auto;-webkit-line-clamp:2;}
-    .card .get{font-size:11.5px;padding:7px 8px;}
-    .card .tags{gap:4px;}
-    .tag{font-size:9.5px;padding:1px 5px;}
-    .tab{padding:8px 2px;font-size:11px;}
+    body{padding-bottom:64px;}
+    .topbar-inner{padding:9px 12px;gap:10px;}
+    .brand{gap:9px;}
+    .brand .logo{width:34px;height:34px;}
+    .brand h1{font-size:14.5px;letter-spacing:0;}
+    .brand .sub{font-size:10.5px;}
+    .auto-badge{font-size:10px;padding:1px 6px;line-height:1.5;}
+    .search-box input{height:34px;font-size:13px;}
+    .meta{font-size:11px;gap:10px;}
+    .legend{font-size:10px;gap:5px;}
+    .legend i{width:7px;height:7px;}
+    .wrap{padding:12px 12px 24px;}
+    .section{margin-bottom:16px;border-radius:0;}
+    .sec-head{padding:11px 14px;gap:8px;}
+    .sec-head .ic{width:18px;height:18px;}
+    .sec-head .name{font-size:13.5px;}
+    .sec-head .count{font-size:11px;padding:2px 8px;}
+    /* 单列：卡片更宽、更紧凑 */
+    .grid{grid-template-columns:1fr;border-left:none;border-top:none;}
+    .card{padding:13px 14px;min-height:0;gap:10px;}
+    .card:hover{box-shadow:none;background:#fafaf8;}
+    .card-head{gap:11px;}
+    .card .ava{width:38px;height:38px;flex:0 0 auto;}
+    .card .nm{font-size:14px;line-height:1.35;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+    .card .exp{font-size:10.5px;padding:2px 7px;flex-shrink:0;}
+    .card .new-tag{font-size:10.5px;line-height:16px;padding:0 6px;}
+    .card .tags{display:flex;gap:5px;flex-wrap:wrap;}
+    .tag{font-size:10.5px;padding:2px 7px;line-height:1.5;}
+    .card .ds{font-size:12px;line-height:1.65;min-height:0;-webkit-line-clamp:3;}
+    .card .get{font-size:13px;padding:9px 12px;}
+    .more{font-size:12.5px;padding:11px;}
+    /* 悬浮元素：移动端隐藏 */
+    .floating-qr{display:none!important;}
+    .totop{right:14px;bottom:70px;width:40px;height:40px;font-size:16px;}
+    .tabbar-inner{padding:0 6px;}
+    .tab{padding:7px 2px;font-size:10.5px;gap:2px;}
     .tab .ti{width:16px;height:16px;}
+    /* 弹窗紧凑 */
+    .modal-backdrop{padding:10px;align-items:flex-end;}
+    .modal{max-width:100%;}
+    .modal-head{padding:13px 14px 11px;}
+    .modal-head .ic{width:34px;height:34px;}
+    .modal-head .tt h3{font-size:14.5px;}
+    .modal-body{padding:14px 14px 18px;}
+    .modal-body .exp{font-size:11.5px;padding:2px 9px;}
+    .steps li{font-size:12.5px;gap:9px;margin-bottom:9px;}
+    .steps .num{flex:0 0 20px;height:20px;font-size:10.5px;}
+    .link-row input{font-size:12.5px;padding:8px 10px;}
+    .link-row button{padding:8px 11px;font-size:11.5px;}
   }
-  /* 超小手机：2 列极限紧凑 */
+  /* 超小手机（<=400px）：进一步压缩 */
   @media (max-width:400px){
+    .topbar-inner{padding:8px 10px;}
+    .brand .logo{width:30px;height:30px;}
+    .brand h1{font-size:13.5px;}
+    .auto-badge{font-size:9.5px;padding:1px 5px;}
+    .wrap{padding:10px 10px 20px;}
+    .card{padding:12px 12px;}
+    .card .nm{font-size:13.5px;}
+    .card .ds{font-size:11.5px;}
+    .tag{font-size:10px;padding:1px 6px;}
+  }
+  /* 中等手机（561–768px）：2列紧凑但不单列 */
+  @media (min-width:561px) and (max-width:768px){
     .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .card{padding:12px 9px;min-height:138px;}
-    .card .ava{width:30px;height:30px;}
-    .card .nm{font-size:12.5px;}
-    .card .ds{font-size:10.5px;}
+    .card{padding:14px 13px;min-height:148px;gap:9px;}
+    .card .nm{font-size:13.5px;line-height:1.3;}
+    .card .exp{font-size:10px;padding:2px 6px;}
+    .tag{font-size:10px;padding:1px 6px;}
+    .card .ds{font-size:11.5px;-webkit-line-clamp:2;}
+    .card .get{font-size:12px;padding:8px 10px;}
+    .floating-qr{display:none!important;}
   }
   /* 弹窗在窄屏优化 */
   @media (max-width:640px){
@@ -908,44 +962,40 @@ function initSearch(){
   });
 }
 
-renderSkeleton();
+/* 立即用内嵌兜底数据渲染：用户体感零等待，不再卡骨架屏
+   同时后台异步拉最新 data.json，拉到后平滑替换 + 更新"更新"时间戳 */
+buildData(RAW_FALLBACK);
+renderReal();
+document.body.dataset.state = "ready";
+
 (async ()=>{
-  let raw = RAW_FALLBACK;
-  try {
-    // 数据源优先级：本地同源（最快最稳） → jsDelivr 国内加速 → GitHub raw 兜底
-    // 每个请求 5 秒超时，避免 raw.githubusercontent.com 被墙导致骨架屏一直加载
-    const SOURCES = [
-      {url:'./data.json', name:'本地'},
-      {url:'https://cdn.jsdelivr.net/gh/yangxivi/ainav@main/data.json', name:'jsDelivr'},
-      {url:'https://raw.githubusercontent.com/yangxivi/ainav/main/data.json', name:'GitHub Raw'}
-    ];
-    const fetchAll = (async ()=>{
-      for(const src of SOURCES){
-        try {
-          const ctrl = new AbortController();
-          const timer = setTimeout(()=>ctrl.abort(), 5000);
-          const resp = await fetch(src.url, {cache:'no-store', signal:ctrl.signal});
-          clearTimeout(timer);
-          if(resp.ok){
-            const j = await resp.json();
-            if(Array.isArray(j) && j.length) return j;
+  const SOURCES = [
+    './data.json',
+    'https://cdn.jsdelivr.net/gh/yangxivi/ainav@main/data.json',
+    'https://raw.githubusercontent.com/yangxivi/ainav/main/data.json'
+  ];
+  for(const url of SOURCES){
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(()=>ctrl.abort(), 5000);
+      const resp = await fetch(url, {cache:'no-store', signal:ctrl.signal});
+      clearTimeout(t);
+      if(resp.ok){
+        const j = await resp.json();
+        if(Array.isArray(j) && j.length){
+          // 比较新数据与当前渲染，是否真的有更新（条目数 / 第一条 nm）
+          const cur = document.getElementById("total");
+          const newSig = j.length + "|" + (j[0]?.nm || "") + "|" + (j[0]?.end || "");
+          if(cur && cur.dataset.sig !== newSig){
+            cur.dataset.sig = newSig;
+            buildData(j);
+            renderReal();
           }
-        } catch(e){ /* 尝试下一个数据源 */ }
+          break;
+        }
       }
-      return RAW_FALLBACK;
-    })();
-    // 6 秒总兜底：即使所有源都挂，最多等 6 秒必渲染
-    raw = await Promise.race([fetchAll, new Promise(r=>setTimeout(()=>r(RAW_FALLBACK),6000))]);
-    buildData(raw);
-  } catch(e){
-    console.error('[ainav] 数据加载异常，使用内置兜底', e);
-    buildData(RAW_FALLBACK);
+    } catch(e){ /* 静默尝试下一个源，不打扰用户 */ }
   }
-  app.classList.add("fade-out");
-  setTimeout(()=>{
-    try { renderReal(); } catch(e){ console.error('[ainav] 渲染异常', e); }
-    app.classList.remove("fade-out");
-  }, 260);
 })();
 </script>
 </body>
