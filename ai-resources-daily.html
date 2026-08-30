@@ -904,13 +904,21 @@ function initSearch(){
 renderSkeleton();
 (async ()=>{
   let raw = RAW_FALLBACK;
-  try {
-    const resp = await fetch('./data.json', {cache:'no-store'});
-    if(resp.ok){
-      const j = await resp.json();
-      if(Array.isArray(j) && j.length) raw = j;
-    }
-  } catch(e){ /* file:// 本地直接打开或网络失败时回退内联示例数据 */ }
+  // 数据源优先级：GitHub 仓库实时读取（保证 Cloudflare Pages 直传模式也能每日自动更新） → jsDelivr 兜底 → 本地同源兜底
+  const SOURCES = [
+    'https://raw.githubusercontent.com/yangxivi/ainav/main/data.json',
+    'https://cdn.jsdelivr.net/gh/yangxivi/ainav@main/data.json',
+    './data.json'
+  ];
+  for(const url of SOURCES){
+    try {
+      const resp = await fetch(url, {cache:'no-store'});
+      if(resp.ok){
+        const j = await resp.json();
+        if(Array.isArray(j) && j.length){ raw = j; break; }
+      }
+    } catch(e){ /* 尝试下一个数据源 */ }
+  }
   buildData(raw);
   setTimeout(()=>{
     app.classList.add("fade-out");
