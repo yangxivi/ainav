@@ -8,7 +8,7 @@ https://www.ixivi.cn
 
 ## 特性
 
-- **自动更新**：每日由「免费AI资源日报」自动化任务识别并整理最新资源，写入 `data.json` 后自动推送到本仓库。
+- **自动更新**：每日由「免费AI资源日报」自动化任务识别并整理最新资源，写入 `data.json` 后推送到本仓库；站点**实时从 GitHub 仓库读取** `data.json`（jsDelivr 兜底），因此只需把 Cloudflare Pages 项目连成 Git 集成（或部署一次），之后每天推送即自动生效，无需每次重新部署。
 - **到期紧迫度分类**：
   - 本周到期（≤7天）
   - 本月到期（≤30天）
@@ -23,7 +23,7 @@ https://www.ixivi.cn
 
 | 文件 | 说明 |
 |------|------|
-| `index.html` | 站点入口，从 `data.json` 读取资源并渲染 |
+| `index.html` | 站点入口，优先从 GitHub 仓库实时拉取 `data.json`（jsDelivr 兜底、本地同源兜底）后渲染 |
 | `data.json` | 资源数据，由自动化每日更新 |
 | `ai-resources-daily.html` | 开发版备份 |
 | `bg.svg` | 动态背景 |
@@ -47,12 +47,12 @@ https://www.ixivi.cn
 
 - 自动化任务：免费AI资源日报
 - 运行时间：每天 09:00
-- 流程：识别资源 → 生成 `data.json` → git push 到本仓库 → GitHub Pages 自动部署
+- 流程：识别资源 → 生成 `data.json` → 推送到本仓库 → 站点实时读取（建议 Cloudflare Pages 项目连成 Git 集成，推送即自动部署）
 
 ## 技术栈
 
 - 单文件 HTML + 原生 CSS/JS
-- GitHub Pages 托管
+- Cloudflare Pages 托管（站点实时读取 GitHub 仓库 `data.json`，无需每次重新部署）
 - 无构建步骤
 
 ---

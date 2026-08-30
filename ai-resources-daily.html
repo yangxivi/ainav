@@ -69,7 +69,7 @@
 
   /* 分类大卡片：无圆角，细线包裹 */
   .section{margin-bottom:28px;scroll-margin-top:70px;background:var(--surface);
-    border:1px solid var(--line);border-radius:0;padding:0;box-shadow:var(--shadow);}
+    border:1px solid var(--line);border-radius:0;padding:0;box-shadow:var(--shadow);overflow:hidden;}
   .sec-head{display:flex;align-items:center;gap:10px;padding:16px 20px;
     border-bottom:1px solid var(--line);background:var(--card);}
   .sec-head .ic{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--accent);}
@@ -86,7 +86,7 @@
     background:linear-gradient(90deg,#e5e0d5 25%,#f4f0e8 50%,#e5e0d5 75%);background-size:200% 100%;
     animation:shimmer 1.4s infinite;}
   .skeleton-card{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:18px 16px;display:flex;flex-direction:column;gap:12px;}
+    padding:18px 16px;display:flex;flex-direction:column;gap:12px;min-width:0;}
   .sk{border-radius:0;
     background:linear-gradient(90deg,#e5e0d5 25%,#f4f0e8 50%,#e5e0d5 75%);background-size:200% 100%;
     animation:shimmer 1.4s infinite;}
@@ -97,11 +97,10 @@
   .fade-out{opacity:0;transition:opacity .25s ease;pointer-events:none;}
 
   /* 4×4 栅格：卡片无圆角、无线阴影，用细线分隔 */
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-left:1px solid var(--line);border-top:1px solid var(--line);}
   .card{background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
     padding:18px 16px;display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;
-    transition:background .15s ease,transform .16s ease;min-height:180px;}
-  .card:nth-child(4n){border-right:none;}
+    transition:background .15s ease,transform .16s ease;min-height:180px;min-width:0;}
   .card:hover{background:#fdfcfa;box-shadow:var(--shadow-hover);z-index:1;}
 
   /* 卡片内部栅格 */
@@ -113,11 +112,16 @@
   .card .title-wrap{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
   .card .title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
 
-  .card .nm{font-size:14.5px;font-weight:800;line-height:1.25;flex:1;min-width:0;}
+  .card .nm{font-size:14.5px;font-weight:800;line-height:1.25;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .card .exp{flex:0 0 auto;font-size:10px;font-weight:800;color:var(--accent);white-space:nowrap;
     border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));padding:2px 7px;background:#fff;}
+  .card .new-tag{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+    font-size:11px;line-height:18px;font-weight:800;color:#e53e3e;border:1px solid #e53e3e;border-radius:4px;
+    padding:0 7px;background:#fff;white-space:nowrap;letter-spacing:0;
+    margin-left:6px;animation:newPulse 1.8s ease-in-out infinite;}
+  @keyframes newPulse{0%,100%{box-shadow:0 0 0 0 rgba(229,62,62,0.0);}50%{box-shadow:0 0 0 3px rgba(229,62,62,0.18);}}
   .card .tags{display:flex;gap:6px;flex-wrap:wrap;}
-  .tag{font-size:10px;font-weight:700;padding:1px 6px;line-height:1.6;}
+  .tag{font-size:10px;font-weight:700;padding:1px 6px;line-height:1.6;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .tag.pf{color:#4b5563;background:#f4f2ee;border:1px solid var(--line);}
   .tag.tp{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,#fff);
     border:1px solid color-mix(in srgb,var(--accent) 28%,#fff);}
@@ -218,16 +222,12 @@
   /* 平板（横屏）：3 列 */
   @media (max-width:1024px){
     .wrap{padding:18px 16px 40px;}
-    .grid{grid-template-columns:repeat(3,1fr);}
-    .card:nth-child(4n){border-right:1px solid var(--line);}
-    .card:nth-child(3n){border-right:none;}
+    .grid{grid-template-columns:repeat(3,minmax(0,1fr));}
     .sec-head .hint{display:none;}
   }
   /* 平板（竖屏）/ 大手机：2 列 */
   @media (max-width:768px){
-    .grid{grid-template-columns:repeat(2,1fr);}
-    .card:nth-child(3n){border-right:1px solid var(--line);}
-    .card:nth-child(2n){border-right:none;}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .sec-head{flex-wrap:wrap;gap:6px 10px;padding:14px 16px;}
     .topbar-inner{padding:11px 14px;}
     .search-box{order:2;width:100%;max-width:none;margin-top:6px;}
@@ -238,19 +238,22 @@
   @media (max-width:560px){
     .brand h1{font-size:16px;}
     .brand .sub{font-size:11px;}
-    .card{padding:14px 12px;min-height:168px;gap:8px;}
-    .card .nm{font-size:13.5px;}
-    .card .ds{font-size:11.5px;min-height:46px;}
+    .card{padding:14px 12px;min-height:148px;gap:8px;}
+    .card .nm{font-size:13px;}
+    .card .ds{font-size:11px;min-height:auto;-webkit-line-clamp:2;}
     .card .get{font-size:11.5px;padding:7px 8px;}
+    .card .tags{gap:4px;}
+    .tag{font-size:9.5px;padding:1px 5px;}
     .tab{padding:8px 2px;font-size:11px;}
     .tab .ti{width:16px;height:16px;}
   }
   /* 超小手机：2 列极限紧凑 */
   @media (max-width:400px){
-    .grid{grid-template-columns:repeat(2,1fr);gap:0;}
-    .card{padding:12px 9px;min-height:158px;}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .card{padding:12px 9px;min-height:138px;}
     .card .ava{width:30px;height:30px;}
-    .card .ds{font-size:11px;min-height:42px;}
+    .card .nm{font-size:12.5px;}
+    .card .ds{font-size:10.5px;}
   }
   /* 弹窗在窄屏优化 */
   @media (max-width:640px){
@@ -549,9 +552,11 @@ const tabbar = document.getElementById("tabbar");
 /* 日期与分类工具 */
 function dayStart(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
 const TODAY = dayStart(new Date());
+const TODAY_STR = TODAY.getFullYear()+"-"+String(TODAY.getMonth()+1).padStart(2,"0")+"-"+String(TODAY.getDate()).padStart(2,"0");
 function parseEnd(s){
   if(s==="FREE" || s==="LIMIT") return s;
-  return dayStart(new Date(s));
+  const d = dayStart(new Date(s));
+  return isNaN(d.getTime()) ? "LIMIT" : d;
 }
 function daysUntil(end){
   if(end==="FREE" || end==="LIMIT") return Infinity;
@@ -671,7 +676,8 @@ function openModal(it, accent){
   modal.style.setProperty("--mcolor", accent);
   setIcon(document.getElementById("mIcon"), it, 64);
   document.getElementById("mTitle").textContent = it.nm;
-  document.getElementById("mSub").textContent = `${it.pf} · ${it.tp} · 到期：${it._exp}`;
+  const newBadge = (it.ad && it.ad===TODAY_STR) ? '<span class="new-tag" style="margin-left:6px;" title="今日新增">新</span>' : '';
+  document.getElementById("mSub").innerHTML = `${it.pf} · ${it.tp} · 到期：${it._exp}${newBadge}`;
   document.getElementById("mExp").textContent = "⏳ 到期时间：" + it._exp;
   document.getElementById("mUrl").value = url;
   const ol = document.getElementById("mSteps");
@@ -764,6 +770,7 @@ function renderReal(){
             <div class="title-wrap">
               <div class="title-row">
                 <div class="nm">${it.nm}</div>
+                ${it.ad && it.ad===TODAY_STR ? '<span class="new-tag" title="今日新增">新</span>' : ''}
                 <span class="exp">${it._exp}</span>
               </div>
               <div class="tags"><span class="tag pf">${it.pf}</span><span class="tag tp">${it.tp}</span></div>
@@ -904,33 +911,41 @@ function initSearch(){
 renderSkeleton();
 (async ()=>{
   let raw = RAW_FALLBACK;
-  // 数据源优先级：本地同源（最快最稳） → jsDelivr 国内加速 → GitHub raw 兜底
-  // 每个请求 5 秒超时，避免 raw.githubusercontent.com 被墙导致骨架屏一直加载
-  const SOURCES = [
-    './data.json',
-    'https://cdn.jsdelivr.net/gh/yangxivi/ainav@main/data.json',
-    'https://raw.githubusercontent.com/yangxivi/ainav/main/data.json'
-  ];
-  for(const url of SOURCES){
-    try {
-      const ctrl = new AbortController();
-      const timer = setTimeout(()=>ctrl.abort(), 5000);
-      const resp = await fetch(url, {cache:'no-store', signal:ctrl.signal});
-      clearTimeout(timer);
-      if(resp.ok){
-        const j = await resp.json();
-        if(Array.isArray(j) && j.length){ raw = j; break; }
+  try {
+    // 数据源优先级：本地同源（最快最稳） → jsDelivr 国内加速 → GitHub raw 兜底
+    // 每个请求 5 秒超时，避免 raw.githubusercontent.com 被墙导致骨架屏一直加载
+    const SOURCES = [
+      {url:'./data.json', name:'本地'},
+      {url:'https://cdn.jsdelivr.net/gh/yangxivi/ainav@main/data.json', name:'jsDelivr'},
+      {url:'https://raw.githubusercontent.com/yangxivi/ainav/main/data.json', name:'GitHub Raw'}
+    ];
+    const fetchAll = (async ()=>{
+      for(const src of SOURCES){
+        try {
+          const ctrl = new AbortController();
+          const timer = setTimeout(()=>ctrl.abort(), 5000);
+          const resp = await fetch(src.url, {cache:'no-store', signal:ctrl.signal});
+          clearTimeout(timer);
+          if(resp.ok){
+            const j = await resp.json();
+            if(Array.isArray(j) && j.length) return j;
+          }
+        } catch(e){ /* 尝试下一个数据源 */ }
       }
-    } catch(e){ /* 尝试下一个数据源 */ }
+      return RAW_FALLBACK;
+    })();
+    // 6 秒总兜底：即使所有源都挂，最多等 6 秒必渲染
+    raw = await Promise.race([fetchAll, new Promise(r=>setTimeout(()=>r(RAW_FALLBACK),6000))]);
+    buildData(raw);
+  } catch(e){
+    console.error('[ainav] 数据加载异常，使用内置兜底', e);
+    buildData(RAW_FALLBACK);
   }
-  buildData(raw);
+  app.classList.add("fade-out");
   setTimeout(()=>{
-    app.classList.add("fade-out");
-    setTimeout(()=>{
-      renderReal();
-      app.classList.remove("fade-out");
-    }, 260);
-  }, 300);
+    try { renderReal(); } catch(e){ console.error('[ainav] 渲染异常', e); }
+    app.classList.remove("fade-out");
+  }, 260);
 })();
 </script>
 </body>
