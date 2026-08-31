@@ -29,16 +29,6 @@
     "get": "注册充值赠"
   },
   {
-    "nm": "芒果灵创福利周",
-    "pf": "芒果TV",
-    "tp": "绘图",
-    "ic": "🎨",
-    "end": "2026-08-31",
-    "ds": "芒果TV旗下「芒果灵创」福利周，报名 8/25–8/31 全量注册用户无门槛参与，7 款旗舰图片/视频模型（Qwen Image 3.0 Pro、Wan 2.7/3.0 等）7 天免费畅用，平台算力补贴，每天免费生成次数、先到先得。",
-    "get": "活动页报名",
-    "url": "https://aigc.mgtv.com/"
-  },
-  {
     "nm": "ZCode 周末送 3 亿 Token",
     "pf": "智谱",
     "tp": "编程",
@@ -48,6 +38,16 @@
     "get": "客户端活动卡领取",
     "url": "https://zcode.z.ai",
     "ad": "2026-08-29"
+  },
+  {
+    "nm": "献丑AI × 通义 Wan 3.0 全免",
+    "pf": "阿里 / 献丑AI",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "2026-08-31",
+    "ds": "献丑AI xianchou.com 开 Wan 3.0 全免活动，报名后每人固定 500 元额度（画布 300 + 爆款复刻 200），跑 Wan 3.0/3.0 Prime 0 积分出片，30 秒 1080P 也免。成片 60 秒以上可上爆款复刻，发布到一个社媒平台。",
+    "get": "xianchou.com 首页弹窗或\"全免活动\"入口填报名表，运营拉群后给画布 ID 开通",
+    "url": "https://xianchou.com"
   },
   {
     "nm": "网易 LobsterAI 积分",
@@ -60,6 +60,16 @@
     "url": ""
   },
   {
+    "nm": "芒果灵创福利周",
+    "pf": "芒果TV",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "2026-08-31",
+    "ds": "芒果TV旗下「芒果灵创」福利周，报名 8/25–8/31 全量注册用户无门槛参与，7 款旗舰图片/视频模型（Qwen Image 3.0 Pro、Wan 2.7/3.0 等）7 天免费畅用，平台算力补贴，每天免费生成次数、先到先得。",
+    "get": "活动页报名",
+    "url": "https://aigc.mgtv.com/"
+  },
+  {
     "nm": "阿里云 STAROps 新人礼",
     "pf": "阿里",
     "tp": "智能体",
@@ -68,6 +78,16 @@
     "ds": "阿里云 STAROps 全域运维新用户 1 万积分试用 1 个月 + 每月 2500 免费额度 + SLS 50GB 免费写入，活动 8/18–8/31，适合做智能运维、日志分析与告警自动化。",
     "get": "活动页领取",
     "url": "https://www.aliyun.com"
+  },
+  {
+    "nm": "Qoder 每日 Credits 限时拉新",
+    "pf": "阿里",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "2026-09-01",
+    "ds": "阿里 8/27 把 Qoder 升级为\"面向所有人的智能体工作台\"，配套拉新福利：个人版每天 10:00 领 500 Qwen 专属 Credits，最高累计 2500，折算订阅价约 36–74 元。",
+    "get": "下载 Qoder 个人版，每天 10:00 到活动页点击领取；当天额度次日 10:00 失效",
+    "url": "https://qoder.com"
   },
   {
     "nm": "GMI Cloud × MiniMax Week",
@@ -237,15 +257,6 @@
     "get": "领券"
   },
   {
-    "nm": "通义万相免费",
-    "pf": "阿里",
-    "tp": "绘图",
-    "ic": "🎨",
-    "end": "2026-09-24",
-    "ds": "文生图免费额度，风格多样，控制台领取，适合做封面与素材。",
-    "get": "控制台"
-  },
-  {
     "nm": "百度 Comate 限免第二弹",
     "pf": "百度",
     "tp": "编程",
@@ -254,6 +265,15 @@
     "ds": "百度文心快码 Comate 限免第二弹，测试版写代码 Token 不限量免费，支持 IDE 插件补全、对话改代码与仓库级问答，国内直连，免费期至 9/24。",
     "get": "插件登录即用",
     "url": "https://comate.baidu.com"
+  },
+  {
+    "nm": "通义万相免费",
+    "pf": "阿里",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "2026-09-24",
+    "ds": "文生图免费额度，风格多样，控制台领取，适合做封面与素材。",
+    "get": "控制台"
   },
   {
     "nm": "腾讯元宝活动",
@@ -265,13 +285,24 @@
     "get": "活动页"
   },
   {
-    "nm": "飞书智能伙伴",
-    "pf": "飞书",
+    "nm": "豆包工作 送 30 天会员",
+    "pf": "字节",
     "tp": "智能体",
     "ic": "🤖",
+    "end": "2026-09-25",
+    "ds": "字节 8/25 发布办公 Agent「豆包工作」，能自主拆任务、操作浏览器与电脑、读写本地文件、跑定时任务并与飞书打通。下载电脑版并用豆包账号登录即限时免费领 30 天标准订阅（价值 68 元），已有会员自动顺延；仅限 Windows / Mac 客户端。",
+    "get": "下载电脑版登录",
+    "url": "https://www.doubao.com/work",
+    "ad": "2026-08-29"
+  },
+  {
+    "nm": "华为盘古试用",
+    "pf": "华为",
+    "tp": "对话",
+    "ic": "💬",
     "end": "2026-09-26",
-    "ds": "企业版体验，集成文档与表格，邀请码开通，适合团队提效。",
-    "get": "邀请码"
+    "ds": "Pangu 体验包，行业模型丰富，实名领取，适合政企场景验证。",
+    "get": "实名"
   },
   {
     "nm": "钉钉 AI 助理",
@@ -283,13 +314,13 @@
     "get": "组织开通"
   },
   {
-    "nm": "华为盘古试用",
-    "pf": "华为",
-    "tp": "对话",
-    "ic": "💬",
+    "nm": "飞书智能伙伴",
+    "pf": "飞书",
+    "tp": "智能体",
+    "ic": "🤖",
     "end": "2026-09-26",
-    "ds": "Pangu 体验包，行业模型丰富，实名领取，适合政企场景验证。",
-    "get": "实名"
+    "ds": "企业版体验，集成文档与表格，邀请码开通，适合团队提效。",
+    "get": "邀请码"
   },
   {
     "nm": "HY3 限免延长",
@@ -312,6 +343,16 @@
     "get": "活动页"
   },
   {
+    "nm": "WorkBuddy 高校 AI 算力公益",
+    "pf": "腾讯 WorkBuddy",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "2026-10-31",
+    "ds": "腾讯联合高校的定向公益活动：每位学生可领新人礼包 2000 积分 + 学生认证 1000 积分；同期 Hy4-preview 免费用到 9/10、Hy3 免费用到 9/30。总额度有限、先到先得。",
+    "get": "在校生按学信网认证（新生可上传录取通知书），走学校专属入口扫码领",
+    "url": "https://workbuddy.tencent.com"
+  },
+  {
     "nm": "文心会员体验",
     "pf": "百度",
     "tp": "对话",
@@ -319,15 +360,6 @@
     "end": "2026-10-31",
     "ds": "月度体验卡，高级模型可用，领取中心获取，适合短期重度使用。",
     "get": "领取中心"
-  },
-  {
-    "nm": "豆包会员试用",
-    "pf": "字节",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "2026-11-30",
-    "ds": "7 天会员体验，多模态丰富，App 内领取，适合体验高级能力。",
-    "get": "App 内"
   },
   {
     "nm": "Gemini 试用",
@@ -339,32 +371,13 @@
     "get": "谷歌账号"
   },
   {
-    "nm": "腾讯云 TokenHub",
-    "pf": "腾讯",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "2026-12-31",
-    "ds": "腾讯云大模型服务平台 TokenHub 新人免费体验包：全部语言模型各 100 万 Tokens（有效期 1 年）、多模态理解各 100 万 Tokens、混元生 3D 100 积分、生视频 50 积分，本期活动至 2026-12-31。",
-    "get": "模型广场领取",
-    "url": "https://cloud.tencent.com/product/tokenhub"
-  },
-  {
-    "nm": "GitHub Copilot",
-    "pf": "GitHub",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "2026-12-31",
-    "ds": "学生包一年免费，编辑器内 AI 补全与对话，edu 认证后畅用，开发利器。",
-    "get": "学生认证"
-  },
-  {
-    "nm": "Cursor 教育",
-    "pf": "Cursor",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "2026-12-31",
-    "ds": "教育优惠全年订阅，多模型切换，edu 邮箱申请，适合重度编码。",
-    "get": "edu 邮箱"
+    "nm": "豆包会员试用",
+    "pf": "字节",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "2026-11-30",
+    "ds": "7 天会员体验，多模态丰富，App 内领取，适合体验高级能力。",
+    "get": "App 内"
   },
   {
     "nm": "Claude 免费档",
@@ -376,15 +389,6 @@
     "get": "注册即用"
   },
   {
-    "nm": "通义灵码",
-    "pf": "阿里",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "2026-12-31",
-    "ds": "IDE 插件免费补全，支持多种编辑器，安装即享，适合日常开发。",
-    "get": "安装即享"
-  },
-  {
     "nm": "CodeBuddy",
     "pf": "腾讯",
     "tp": "编程",
@@ -394,31 +398,32 @@
     "get": "登录"
   },
   {
-    "nm": "可灵 AI 免费",
-    "pf": "快手",
-    "tp": "视频",
-    "ic": "🎬",
+    "nm": "Cursor 教育",
+    "pf": "Cursor",
+    "tp": "编程",
+    "ic": "💻",
     "end": "2026-12-31",
-    "ds": "视频生成免费档，画质优秀，注册即用，适合短视频创作。",
-    "get": "注册"
+    "ds": "教育优惠全年订阅，多模型切换，edu 邮箱申请，适合重度编码。",
+    "get": "edu 邮箱"
   },
   {
-    "nm": "即梦 AI 免费",
-    "pf": "字节",
-    "tp": "绘图",
-    "ic": "🎨",
+    "nm": "GitHub Copilot",
+    "pf": "GitHub",
+    "tp": "编程",
+    "ic": "💻",
     "end": "2026-12-31",
-    "ds": "文生图与视频免费，风格潮流，登录即用，适合创意设计。",
-    "get": "登录"
+    "ds": "学生包一年免费，编辑器内 AI 补全与对话，edu 认证后畅用，开发利器。",
+    "get": "学生认证"
   },
   {
-    "nm": "海螺 AI 免费",
-    "pf": "MiniMax",
-    "tp": "语音",
-    "ic": "🎙️",
+    "nm": "Google AI 学生免费档",
+    "pf": "谷歌",
+    "tp": "对话",
+    "ic": "💬",
     "end": "2026-12-31",
-    "ds": "对话与语音免费，音色自然，注册即用，适合配音与陪伴。",
-    "get": "登录"
+    "ds": "Google 8/19 启动的开学季学生计划：符合条件的美国大学生免费 1 年 Google AI Pro（含 2TB 存储、YouTube Premium、Flow 出图等），其他受支持市场免费 1 年 Google AI Plus；中国大陆/香港/澳门不支持。",
+    "get": "one.google.com 学生优惠入口经 SheerID 认证领取",
+    "url": "https://one.google.com/about/student"
   },
   {
     "nm": "上海电信 星辰 TeleAgent",
@@ -431,6 +436,24 @@
     "url": ""
   },
   {
+    "nm": "即梦 AI 免费",
+    "pf": "字节",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "2026-12-31",
+    "ds": "文生图与视频免费，风格潮流，登录即用，适合创意设计。",
+    "get": "登录"
+  },
+  {
+    "nm": "可灵 AI 免费",
+    "pf": "快手",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "2026-12-31",
+    "ds": "视频生成免费档，画质优秀，注册即用，适合短视频创作。",
+    "get": "注册"
+  },
+  {
     "nm": "微信小程序成长计划二期",
     "pf": "腾讯",
     "tp": "编程",
@@ -441,14 +464,290 @@
     "url": "https://developers.weixin.qq.com/miniprogram/dev/framework/"
   },
   {
-    "nm": "阿里百炼试用包",
+    "nm": "海螺 AI 免费",
+    "pf": "MiniMax",
+    "tp": "语音",
+    "ic": "🎙️",
+    "end": "2026-12-31",
+    "ds": "对话与语音免费，音色自然，注册即用，适合配音与陪伴。",
+    "get": "登录"
+  },
+  {
+    "nm": "腾讯云 TokenHub",
+    "pf": "腾讯",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "2026-12-31",
+    "ds": "腾讯云大模型服务平台 TokenHub 新人免费体验包：全部语言模型各 100 万 Tokens（有效期 1 年）、多模态理解各 100 万 Tokens、混元生 3D 100 积分、生视频 50 积分，本期活动至 2026-12-31。",
+    "get": "模型广场领取",
+    "url": "https://cloud.tencent.com/product/tokenhub"
+  },
+  {
+    "nm": "通义灵码",
+    "pf": "阿里",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "2026-12-31",
+    "ds": "IDE 插件免费补全，支持多种编辑器，安装即享，适合日常开发。",
+    "get": "安装即享"
+  },
+  {
+    "nm": "AI21 Labs 免费积分",
+    "pf": "AI21",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "AI21 Labs 新用户注册赠 $10 免费积分（无需信用卡），支持 Jamba Mini/Large 等长上下文模型，按用量扣减、用完为止。",
+    "get": "注册即送",
+    "url": "https://www.ai21.com"
+  },
+  {
+    "nm": "Baseten 免费积分",
+    "pf": "Baseten",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "LIMIT",
+    "ds": "Baseten 新用户注册赠 $30 免费积分，可用于部署任意 HuggingFace 模型、按 GPU 计算时间计费，适合自托管推理与微调原型。",
+    "get": "注册即送",
+    "url": "https://baseten.co"
+  },
+  {
+    "nm": "ChatGPT 免费",
+    "pf": "OpenAI",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "GPT 免费档对话，通用能力强，账号登录，适合日常问答。",
+    "get": "账号"
+  },
+  {
+    "nm": "Coze 海外",
+    "pf": "字节",
+    "tp": "智能体",
+    "ic": "🤖",
+    "end": "LIMIT",
+    "ds": "Bot 免费部署，插件生态丰富，注册即用，适合出海。",
+    "get": "注册"
+  },
+  {
+    "nm": "DeepSeek V4 Flash 限时免费 API",
+    "pf": "深度求索",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "DeepSeek V4 Flash 经官方及华为云 / B.AI 等渠道限时免费调用，OpenAI 兼容、低延迟，适合低成本高频推理。",
+    "get": "渠道调用",
+    "url": "https://platform.deepseek.com",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Fireworks 免费额度",
+    "pf": "Fireworks",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "Fireworks 新用户赠 $1 免费额度，高速推理开源模型，适合做 RAG 与 Agent 后端原型。",
+    "get": "注册即送",
+    "url": "https://fireworks.ai",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "GLM Coding Plan 7 天体验卡",
+    "pf": "智谱",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "LIMIT",
+    "ds": "智谱面向没订阅过 GLM Coding Plan 的用户每天限量免费发 7 天体验卡（每天 1 万张），领了在 ZCode 里直接调 GLM-5.3-Flash 干编码、看图改前端。",
+    "get": "bigmodel.cn 活动页\"体验卡\"入口免费领，每天限量、领完等次日",
+    "url": "https://bigmodel.cn/activity/trial-card/PU9MTWG0PM"
+  },
+  {
+    "nm": "Hyperbolic 免费额度",
+    "pf": "Hyperbolic",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "Hyperbolic 新用户赠 $1 免费额度，覆盖 DeepSeek V3、Llama 405B 等模型，按量计费、用完为止，适合快速验证。",
+    "get": "注册即送",
+    "url": "https://www.hyperbolic.xyz",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Kimi 智能体",
+    "pf": "Kimi",
+    "tp": "智能体",
+    "ic": "🤖",
+    "end": "LIMIT",
+    "ds": "智能体免费创建，长上下文支撑，账号登录，适合自动化。",
+    "get": "账号"
+  },
+  {
+    "nm": "Luma 视频",
+    "pf": "Luma",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "LIMIT",
+    "ds": "Dream Machine 免费额度，运动自然，注册即用，适合实验。",
+    "get": "注册"
+  },
+  {
+    "nm": "Modal 免费算力",
+    "pf": "Modal",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "LIMIT",
+    "ds": "Modal 每月赠 $30 GPU 计算额度，可部署任意开源模型，适合自托管推理与微调原型。",
+    "get": "注册即送",
+    "url": "https://modal.com",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "NLP Cloud 免费额度",
+    "pf": "NLP Cloud",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "NLP Cloud 新用户赠 $15 免费额度（需手机验证），覆盖多语言生成与推理模型，适合轻量集成。",
+    "get": "注册即送",
+    "url": "https://nlpcloud.com",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Nebius 免费额度",
+    "pf": "Nebius",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "LIMIT",
+    "ds": "Nebius 新用户赠 $1 免费额度，可跑 DeepSeek V3、Llama 405B 等前沿开源模型，欧洲节点低延迟，按量计费、用完为止。",
+    "get": "注册即送",
+    "url": "https://nebius.com",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Notion AI",
+    "pf": "Notion",
+    "tp": "写作",
+    "ic": "✍️",
+    "end": "LIMIT",
+    "ds": "新用户免费期，文档智能生成，注册即用，适合知识管理。",
+    "get": "注册"
+  },
+  {
+    "nm": "OpenAI Codex for OSS",
+    "pf": "OpenAI",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "LIMIT",
+    "ds": "OpenAI Codex for Open Source：活跃开源项目维护者可领 6 个月 ChatGPT Pro + API credits，用于 PR 审查与发布自动化，官方表单申请、滚动审核。",
+    "get": "表单申请",
+    "url": "https://openai.com/form/codex-for-oss",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Perplexity 试用",
+    "pf": "Perplexity",
+    "tp": "搜索",
+    "ic": "🔍",
+    "end": "LIMIT",
+    "ds": "搜索试用额度，带引用来源，邮箱注册，适合研究。",
+    "get": "邮箱"
+  },
+  {
+    "nm": "Pika 免费",
+    "pf": "Pika",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "LIMIT",
+    "ds": "视频生成免费档，玩法多样，登录即用，适合趣味创作。",
+    "get": "登录"
+  },
+  {
+    "nm": "PixVerse 视频",
+    "pf": "PixVerse",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "LIMIT",
+    "ds": "新用户免费积分，特效丰富，邮箱注册，适合社媒短片。",
+    "get": "邮箱"
+  },
+  {
+    "nm": "Poe 免费",
+    "pf": "Poe",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "多模型免费档，一键切换，注册即用，适合横向对比。",
+    "get": "注册"
+  },
+  {
+    "nm": "Runway 试用",
+    "pf": "Runway",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "LIMIT",
+    "ds": "Gen 系列试用帧，电影级质感，账号登录，适合专业剪辑。",
+    "get": "账号"
+  },
+  {
+    "nm": "Scaleway 免费额度",
+    "pf": "Scaleway",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "LIMIT",
+    "ds": "Scaleway（欧盟）新用户赠 100 万 tokens 免费额度，含 devstral / voxtral 等多语种模型，欧洲合规。",
+    "get": "注册即送",
+    "url": "https://www.scaleway.com",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Upstage 免费额度",
+    "pf": "Upstage",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "Upstage 新用户赠 $10 免费额度（3 个月），可跑 Solar Pro / Mini 等模型，适合文档 AI。",
+    "get": "注册即送",
+    "url": "https://upstage.ai",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "七牛云 300 万 Token",
+    "pf": "七牛云",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "LIMIT",
+    "ds": "七牛云 AI 推理开放渠道福利，注册可免费领 300 万 Token、有效期 2 年，支持 DeepSeek / Kimi / GLM 等 50+ 热门模型，兼容 OpenAI 与 Anthropic 协议，国内直连速度稳定。",
+    "get": "注册后领取",
+    "url": "https://www.qiniu.com"
+  },
+  {
+    "nm": "万兴喵影 AI",
+    "pf": "万兴",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "LIMIT",
+    "ds": "剪辑 AI 免费，自动字幕与特效，安装即用，适合新手。",
+    "get": "安装"
+  },
+  {
+    "nm": "千问 App 新人立减券",
     "pf": "阿里",
     "tp": "对话",
     "ic": "💬",
     "end": "LIMIT",
-    "ds": "阿里云百炼新用户实名开通后自动发放 90 天免费资源包：文本模型超 7000 万 Tokens、图像生成 100 张、视频生成 50 秒，覆盖 Qwen3 全系，建议开「安心试用模式」防超额扣费。",
-    "get": "开通自动发放",
-    "url": "https://bailian.console.aliyun.com"
+    "ds": "千问 App 新用户在对话框发送指定口令可触发 8 元无门槛支付宝立减券，属长期拉新活动、口令会轮换，仅新用户可领。顺手薅一张，日常对话本身免费。",
+    "get": "对话框发口令",
+    "url": ""
+  },
+  {
+    "nm": "华为云码道 码力续航",
+    "pf": "华为",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "LIMIT",
+    "ds": "华为云码道「码力续航计划」每日发放 1000 万免费 Token，注册即领、免绑卡、当日有效不累计，额度池先到先得，适合日常写代码与调试。",
+    "get": "注册每日领",
+    "url": "https://www.huaweicloud.com"
   },
   {
     "nm": "即梦 AI 创作",
@@ -478,49 +777,13 @@
     "get": "登录"
   },
   {
-    "nm": "PixVerse 视频",
-    "pf": "PixVerse",
-    "tp": "视频",
-    "ic": "🎬",
+    "nm": "秘塔 AI",
+    "pf": "秘塔",
+    "tp": "搜索",
+    "ic": "🔍",
     "end": "LIMIT",
-    "ds": "新用户免费积分，特效丰富，邮箱注册，适合社媒短片。",
-    "get": "邮箱"
-  },
-  {
-    "nm": "Luma 视频",
-    "pf": "Luma",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "LIMIT",
-    "ds": "Dream Machine 免费额度，运动自然，注册即用，适合实验。",
-    "get": "注册"
-  },
-  {
-    "nm": "Runway 试用",
-    "pf": "Runway",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "LIMIT",
-    "ds": "Gen 系列试用帧，电影级质感，账号登录，适合专业剪辑。",
-    "get": "账号"
-  },
-  {
-    "nm": "Pika 免费",
-    "pf": "Pika",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "LIMIT",
-    "ds": "视频生成免费档，玩法多样，登录即用，适合趣味创作。",
+    "ds": "搜索与写作免费，无广告干净，登录即用，适合中文检索。",
     "get": "登录"
-  },
-  {
-    "nm": "通义听悟",
-    "pf": "阿里",
-    "tp": "转写",
-    "ic": "📝",
-    "end": "LIMIT",
-    "ds": "会议转写限时免费，多语言识别，App 内使用，适合复盘。",
-    "get": "App"
   },
   {
     "nm": "腾讯会议 AI",
@@ -532,234 +795,13 @@
     "get": "会员体验"
   },
   {
-    "nm": "飞书妙记",
-    "pf": "飞书",
+    "nm": "通义听悟",
+    "pf": "阿里",
     "tp": "转写",
     "ic": "📝",
     "end": "LIMIT",
-    "ds": "智能转写免费档，结构化笔记，登录即用，适合团队。",
-    "get": "登录"
-  },
-  {
-    "nm": "Notion AI",
-    "pf": "Notion",
-    "tp": "写作",
-    "ic": "✍️",
-    "end": "LIMIT",
-    "ds": "新用户免费期，文档智能生成，注册即用，适合知识管理。",
-    "get": "注册"
-  },
-  {
-    "nm": "ChatGPT 免费",
-    "pf": "OpenAI",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "GPT 免费档对话，通用能力强，账号登录，适合日常问答。",
-    "get": "账号"
-  },
-  {
-    "nm": "Perplexity 试用",
-    "pf": "Perplexity",
-    "tp": "搜索",
-    "ic": "🔍",
-    "end": "LIMIT",
-    "ds": "搜索试用额度，带引用来源，邮箱注册，适合研究。",
-    "get": "邮箱"
-  },
-  {
-    "nm": "Poe 免费",
-    "pf": "Poe",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "多模型免费档，一键切换，注册即用，适合横向对比。",
-    "get": "注册"
-  },
-  {
-    "nm": "秘塔 AI",
-    "pf": "秘塔",
-    "tp": "搜索",
-    "ic": "🔍",
-    "end": "LIMIT",
-    "ds": "搜索与写作免费，无广告干净，登录即用，适合中文检索。",
-    "get": "登录"
-  },
-  {
-    "nm": "Kimi 智能体",
-    "pf": "Kimi",
-    "tp": "智能体",
-    "ic": "🤖",
-    "end": "LIMIT",
-    "ds": "智能体免费创建，长上下文支撑，账号登录，适合自动化。",
-    "get": "账号"
-  },
-  {
-    "nm": "Coze 海外",
-    "pf": "字节",
-    "tp": "智能体",
-    "ic": "🤖",
-    "end": "LIMIT",
-    "ds": "Bot 免费部署，插件生态丰富，注册即用，适合出海。",
-    "get": "注册"
-  },
-  {
-    "nm": "万兴喵影 AI",
-    "pf": "万兴",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "LIMIT",
-    "ds": "剪辑 AI 免费，自动字幕与特效，安装即用，适合新手。",
-    "get": "安装"
-  },
-  {
-    "nm": "AI21 Labs 免费积分",
-    "pf": "AI21",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "AI21 Labs 新用户注册赠 $10 免费积分（无需信用卡），支持 Jamba Mini/Large 等长上下文模型，按用量扣减、用完为止。",
-    "get": "注册即送",
-    "url": "https://www.ai21.com"
-  },
-  {
-    "nm": "Baseten 免费积分",
-    "pf": "Baseten",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "LIMIT",
-    "ds": "Baseten 新用户注册赠 $30 免费积分，可用于部署任意 HuggingFace 模型、按 GPU 计算时间计费，适合自托管推理与微调原型。",
-    "get": "注册即送",
-    "url": "https://baseten.co"
-  },
-  {
-    "nm": "豆包工作 送 30 天会员",
-    "pf": "字节",
-    "tp": "智能体",
-    "ic": "🤖",
-    "end": "LIMIT",
-    "ds": "字节 8/25 发布办公 Agent「豆包工作」，能自主拆任务、操作浏览器与电脑、读写本地文件、跑定时任务并与飞书打通。下载电脑版并用豆包账号登录即限时免费领 30 天标准订阅（价值 68 元），已有会员自动顺延；仅限 Windows / Mac 客户端。",
-    "get": "下载电脑版登录",
-    "url": "https://www.doubao.com/work",
-    "ad": "2026-08-29"
-  },
-  {
-    "nm": "华为云码道 码力续航",
-    "pf": "华为",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "LIMIT",
-    "ds": "华为云码道「码力续航计划」每日发放 1000 万免费 Token，注册即领、免绑卡、当日有效不累计，额度池先到先得，适合日常写代码与调试。",
-    "get": "注册每日领",
-    "url": "https://www.huaweicloud.com"
-  },
-  {
-    "nm": "七牛云 300 万 Token",
-    "pf": "七牛云",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "七牛云 AI 推理开放渠道福利，注册可免费领 300 万 Token、有效期 2 年，支持 DeepSeek / Kimi / GLM 等 50+ 热门模型，兼容 OpenAI 与 Anthropic 协议，国内直连速度稳定。",
-    "get": "注册后领取",
-    "url": "https://www.qiniu.com"
-  },
-  {
-    "nm": "千问 App 新人立减券",
-    "pf": "阿里",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "千问 App 新用户在对话框发送指定口令可触发 8 元无门槛支付宝立减券，属长期拉新活动、口令会轮换，仅新用户可领。顺手薅一张，日常对话本身免费。",
-    "get": "对话框发口令",
-    "url": ""
-  },
-  {
-    "nm": "OpenAI Codex for OSS",
-    "pf": "OpenAI",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "LIMIT",
-    "ds": "OpenAI Codex for Open Source：活跃开源项目维护者可领 6 个月 ChatGPT Pro + API credits，用于 PR 审查与发布自动化，官方表单申请、滚动审核。",
-    "get": "表单申请",
-    "url": "https://openai.com/form/codex-for-oss",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Nebius 免费额度",
-    "pf": "Nebius",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "LIMIT",
-    "ds": "Nebius 新用户赠 $1 免费额度，可跑 DeepSeek V3、Llama 405B 等前沿开源模型，欧洲节点低延迟，按量计费、用完为止。",
-    "get": "注册即送",
-    "url": "https://nebius.com",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Hyperbolic 免费额度",
-    "pf": "Hyperbolic",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "Hyperbolic 新用户赠 $1 免费额度，覆盖 DeepSeek V3、Llama 405B 等模型，按量计费、用完为止，适合快速验证。",
-    "get": "注册即送",
-    "url": "https://www.hyperbolic.xyz",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Fireworks 免费额度",
-    "pf": "Fireworks",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "Fireworks 新用户赠 $1 免费额度，高速推理开源模型，适合做 RAG 与 Agent 后端原型。",
-    "get": "注册即送",
-    "url": "https://fireworks.ai",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Scaleway 免费额度",
-    "pf": "Scaleway",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "LIMIT",
-    "ds": "Scaleway（欧盟）新用户赠 100 万 tokens 免费额度，含 devstral / voxtral 等多语种模型，欧洲合规。",
-    "get": "注册即送",
-    "url": "https://www.scaleway.com",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Upstage 免费额度",
-    "pf": "Upstage",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "Upstage 新用户赠 $10 免费额度（3 个月），可跑 Solar Pro / Mini 等模型，适合文档 AI。",
-    "get": "注册即送",
-    "url": "https://upstage.ai",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "NLP Cloud 免费额度",
-    "pf": "NLP Cloud",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "LIMIT",
-    "ds": "NLP Cloud 新用户赠 $15 免费额度（需手机验证），覆盖多语言生成与推理模型，适合轻量集成。",
-    "get": "注册即送",
-    "url": "https://nlpcloud.com",
-    "ad": "2026-08-30"
-  },
-  {
-    "nm": "Modal 免费算力",
-    "pf": "Modal",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "LIMIT",
-    "ds": "Modal 每月赠 $30 GPU 计算额度，可部署任意开源模型，适合自托管推理与微调原型。",
-    "get": "注册即送",
-    "url": "https://modal.com",
-    "ad": "2026-08-30"
+    "ds": "会议转写限时免费，多语言识别，App 内使用，适合复盘。",
+    "get": "App"
   },
   {
     "nm": "阿里云百炼 Managed Agents",
@@ -773,170 +815,23 @@
     "ad": "2026-08-30"
   },
   {
-    "nm": "DeepSeek V4 Flash 限时免费 API",
-    "pf": "深度求索",
+    "nm": "阿里百炼试用包",
+    "pf": "阿里",
     "tp": "对话",
     "ic": "💬",
     "end": "LIMIT",
-    "ds": "DeepSeek V4 Flash 经官方及华为云 / B.AI 等渠道限时免费调用，OpenAI 兼容、低延迟，适合低成本高频推理。",
-    "get": "渠道调用",
-    "url": "https://platform.deepseek.com",
-    "ad": "2026-08-30"
+    "ds": "阿里云百炼新用户实名开通后自动发放 90 天免费资源包：文本模型超 7000 万 Tokens、图像生成 100 张、视频生成 50 秒，覆盖 Qwen3 全系，建议开「安心试用模式」防超额扣费。",
+    "get": "开通自动发放",
+    "url": "https://bailian.console.aliyun.com"
   },
   {
-    "nm": "OpenRouter 免费额",
-    "pf": "OpenRouter",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "OpenRouter 免费档聚合 25+ 开源模型（每模型约 50 次/天），免信用卡、OpenAI 兼容，一个 Key 横向切换多家模型，适合轻量集成与模型对比。",
-    "get": "注册即享",
-    "url": "https://openrouter.ai"
-  },
-  {
-    "nm": "魔搭社区",
-    "pf": "阿里",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "阿里魔搭 ModelScope 绑定阿里云账号后每日 2000 次免费 API 调用（单模型 500 次/日、每日重置），4000+ 开源模型可选，国内直连稳定。",
-    "get": "绑定后即用",
-    "url": "https://modelscope.cn"
-  },
-  {
-    "nm": "DeepSeek 对话",
-    "pf": "深度求索",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "官网无限免费对话，推理能力强，网页即用，日常首选。",
-    "get": "网页即用"
-  },
-  {
-    "nm": "通义千问网页",
-    "pf": "阿里",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "基础对话免费，多模态支持，登录即用，适合通用问答。",
+    "nm": "飞书妙记",
+    "pf": "飞书",
+    "tp": "转写",
+    "ic": "📝",
+    "end": "LIMIT",
+    "ds": "智能转写免费档，结构化笔记，登录即用，适合团队。",
     "get": "登录"
-  },
-  {
-    "nm": "文心一言基础",
-    "pf": "百度",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "免费对话档，中文优秀，注册即用，适合办公写作。",
-    "get": "注册"
-  },
-  {
-    "nm": "豆包 App",
-    "pf": "字节",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "免费 AI 助手，语音与图像齐全，下载即用，移动端友好。",
-    "get": "下载"
-  },
-  {
-    "nm": "Kimi 网页",
-    "pf": "Kimi",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "长文免费对话，文档解析强，登录即用，适合研读。",
-    "get": "登录"
-  },
-  {
-    "nm": "元宝 App",
-    "pf": "腾讯",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "免费助手，多模型切换，下载即用，适合日常。",
-    "get": "下载"
-  },
-  {
-    "nm": "讯飞星火基础",
-    "pf": "讯飞",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "免费对话，语音突出，注册即用，适合语音场景。",
-    "get": "注册"
-  },
-  {
-    "nm": "智谱清言基础",
-    "pf": "智谱",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "GLM 免费对话，工具调用稳，登录即用，适合开发。",
-    "get": "登录"
-  },
-  {
-    "nm": "百川基础",
-    "pf": "百川",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "免费对话，中文扎实，网页即用，适合验证。",
-    "get": "网页"
-  },
-  {
-    "nm": "零一万物基础",
-    "pf": "零一",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "Yi 免费对话，长上下文好，登录即用，适合问答。",
-    "get": "登录"
-  },
-  {
-    "nm": "Ollama 本地",
-    "pf": "Ollama",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "本地模型运行，隐私安全，安装即用，适合离线。",
-    "get": "安装"
-  },
-  {
-    "nm": "LM Studio",
-    "pf": "LM Studio",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "本地推理免费，图形界面，下载即用，适合个人。",
-    "get": "下载"
-  },
-  {
-    "nm": "HuggingFace",
-    "pf": "HF",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "模型社区免费，资源海量，账号登录，适合学习。",
-    "get": "账号"
-  },
-  {
-    "nm": "Civitai",
-    "pf": "Civitai",
-    "tp": "绘图",
-    "ic": "🎨",
-    "end": "FREE",
-    "ds": "SD 模型免费，社区活跃，注册即用，适合出图。",
-    "get": "注册"
-  },
-  {
-    "nm": "Google AI Studio",
-    "pf": "Google",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "Gemini 免费实验，API 易用，谷歌账号，适合原型。",
-    "get": "谷歌账号"
   },
   {
     "nm": "AtomGit AI（开放原子）",
@@ -949,96 +844,6 @@
     "url": "https://atomgit.ai"
   },
   {
-    "nm": "百度智能云 苗得 MIAODA",
-    "pf": "百度",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "FREE",
-    "ds": "百度智能云「苗得 MIAODA」精选 Skill 每日免费额度：视频生成 1 次/天、图像生成 5 次/天、其他 200 次/天，每天 0 点重置不累计，国内直连，免费档优先扣减。",
-    "get": "控制台调用",
-    "url": "https://cloud.baidu.com/"
-  },
-  {
-    "nm": "DeepL 开发者 API",
-    "pf": "DeepL",
-    "tp": "写作",
-    "ic": "✍️",
-    "end": "FREE",
-    "ds": "翻译标杆 DeepL 开发者 API 免费档每月 50 万字符，免信用卡，30+ 语言、译文质量高，适合文档/站点/产品多语本地化，每月自动重置。",
-    "get": "注册即送",
-    "url": "https://www.deepl.com/pro"
-  },
-  {
-    "nm": "Recraft 免费绘图",
-    "pf": "Recraft",
-    "tp": "绘图",
-    "ic": "🎨",
-    "end": "FREE",
-    "ds": "AI 设计利器 Recraft 免费档每日自动发积分（约 30–50/天），栅格 1、矢量 2 积分/张，支持品牌风格集与图标/插画/海报，矢量可直接进 Figma。",
-    "get": "注册即用",
-    "url": "https://recraft.ai"
-  },
-  {
-    "nm": "GeeLark AIGC 免费开放",
-    "pf": "GeeLark",
-    "tp": "视频",
-    "ic": "🎬",
-    "end": "FREE",
-    "ds": "GeeLark 于 8/27 更新后把原本仅付费可用的 AIGC 能力开放给免费用户：视频侧含 Seedance 2.5/2.0、Kling 3.0/2.5、Veo 3.1、Hailuo 2.3，图像侧含 GPT Image 2、Nano Banana Pro、Seedream 5.0 Lite，另带切片、去水印、智能字幕工具。",
-    "get": "注册免费档",
-    "url": "https://www.geelark.com"
-  },
-  {
-    "nm": "商汤 SenseNova Token Plan",
-    "pf": "商汤",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "商汤日日新 Token Plan 长期免费公测，注册即领不绑卡、每 5 小时刷新配额：sensenova-6.7-flash-lite 与 u1-fast 各 1500 次/5h、deepseek-v4-flash 150 次/5h（256K 上下文）。完全 OpenAI 兼容，单账号最多 20 个 Key。",
-    "get": "注册即领",
-    "url": "https://platform.sensenova.cn"
-  },
-  {
-    "nm": "智谱 GLM-4.7-Flash 免费 API",
-    "pf": "智谱",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "智谱 BigModel 的 GLM-4.7-Flash 输入输出全部永久免费，200K 上下文、OpenAI 兼容、国内直连，支持函数调用与代码执行，是国内最稳的零成本模型后端之一。",
-    "get": "控制台建 Key",
-    "url": "https://bigmodel.cn"
-  },
-  {
-    "nm": "Groq 免费层",
-    "pf": "Groq",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "Groq 自研 LPU 极速推理免费层，约 14400 请求/天、30 RPM，可跑 Llama 4 / Qwen3 / DeepSeek / Gemma 等开源模型，无需信用卡，输出速度是常见 GPU 方案数倍。",
-    "get": "注册即用",
-    "url": "https://console.groq.com"
-  },
-  {
-    "nm": "GitHub Models",
-    "pf": "GitHub",
-    "tp": "编程",
-    "ic": "💻",
-    "end": "FREE",
-    "ds": "GitHub Models 用 GitHub 账号即可免费调用 GPT-4o、Llama、DeepSeek 等 45+ 模型，OpenAI 兼容、带在线 Playground，适合原型验证与在 Actions 里跑轻量 AI 任务。",
-    "get": "GitHub 账号登录",
-    "url": "https://github.com/marketplace/models"
-  },
-  {
-    "nm": "NVIDIA NIM 免费 API",
-    "pf": "NVIDIA",
-    "tp": "算力",
-    "ic": "🔋",
-    "end": "FREE",
-    "ds": "NVIDIA build.nvidia.com 提供 100+ 开源模型的免费 API credits，免信用卡、credits 不过期，OpenAI 兼容接口，覆盖对话、代码、视觉与语音模型，官方托管稳定。",
-    "get": "注册领 credits",
-    "url": "https://build.nvidia.com"
-  },
-  {
     "nm": "Cerebras 免费额度",
     "pf": "Cerebras",
     "tp": "算力",
@@ -1047,6 +852,15 @@
     "ds": "Cerebras Cloud 免费档每天 100 万 Token 永久免费、无需信用卡，晶圆级芯片带来极高吞吐，适合需要长文本快速批处理的场景。",
     "get": "注册即用",
     "url": "https://cloud.cerebras.ai"
+  },
+  {
+    "nm": "Civitai",
+    "pf": "Civitai",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "FREE",
+    "ds": "SD 模型免费，社区活跃，注册即用，适合出图。",
+    "get": "注册"
   },
   {
     "nm": "Cloudflare Workers AI",
@@ -1059,36 +873,6 @@
     "url": "https://developers.cloudflare.com/workers-ai/"
   },
   {
-    "nm": "Vercel AI Gateway",
-    "pf": "Vercel",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "Vercel AI Gateway 对未付费用户每 30 天发放 $5 Gateway credits，一个账号一套 API 即可路由到多家模型商，文本与图像生成都能覆盖（Imagen、FLUX、GPT Image、Recraft 等）。",
-    "get": "账号自动发放",
-    "url": "https://vercel.com/ai-gateway"
-  },
-  {
-    "nm": "Pollinations.AI 免 Key 生图",
-    "pf": "Pollinations",
-    "tp": "绘图",
-    "ic": "🎨",
-    "end": "FREE",
-    "ds": "Pollinations.AI 免注册、免 API Key、免费的图像生成服务，直接拼 URL 就能出图，可嵌进网页或脚本批量生成，适合做占位图、封面与自动化流水线。",
-    "get": "直接调用 URL",
-    "url": "https://pollinations.ai"
-  },
-  {
-    "nm": "Mistral AI 免费层",
-    "pf": "Mistral",
-    "tp": "对话",
-    "ic": "💬",
-    "end": "FREE",
-    "ds": "Mistral AI 免费层含 Le Chat 网页对话与 Codestral 代码模型 API，永久免费、免信用卡、OpenAI 兼容，欧洲合规，适合当备用模型后端做多源路由。",
-    "get": "注册即用",
-    "url": "https://console.mistral.ai"
-  },
-  {
     "nm": "Cohere 免费 Trial API",
     "pf": "Cohere",
     "tp": "搜索",
@@ -1097,6 +881,25 @@
     "ds": "Cohere Trial Key 每月 1000 次免费调用，覆盖 Command A 对话、Embed 4 向量与 Rerank 3.5 重排，免信用卡，做 RAG 检索与语义搜索原型最合适。",
     "get": "注册建 Trial Key",
     "url": "https://dashboard.cohere.com"
+  },
+  {
+    "nm": "DeepL 开发者 API",
+    "pf": "DeepL",
+    "tp": "写作",
+    "ic": "✍️",
+    "end": "FREE",
+    "ds": "翻译标杆 DeepL 开发者 API 免费档每月 50 万字符，免信用卡，30+ 语言、译文质量高，适合文档/站点/产品多语本地化，每月自动重置。",
+    "get": "注册即送",
+    "url": "https://www.deepl.com/pro"
+  },
+  {
+    "nm": "DeepSeek 对话",
+    "pf": "深度求索",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "官网无限免费对话，推理能力强，网页即用，日常首选。",
+    "get": "网页即用"
   },
   {
     "nm": "ElevenLabs 免费 TTS",
@@ -1119,26 +922,71 @@
     "url": "https://fish.audio"
   },
   {
-    "nm": "SambaNova Cloud 免费推理",
-    "pf": "SambaNova",
-    "tp": "算力",
-    "ic": "🔋",
+    "nm": "GeeLark AIGC 免费开放",
+    "pf": "GeeLark",
+    "tp": "视频",
+    "ic": "🎬",
     "end": "FREE",
-    "ds": "SambaNova Cloud 每模型每天 200,000 tokens 免费推理，覆盖 Llama / Qwen / DeepSeek 等开源模型，无需信用卡，注册即用。",
-    "get": "注册即用",
-    "url": "https://cloud.sambanova.ai",
-    "ad": "2026-08-30"
+    "ds": "GeeLark 于 8/27 更新后把原本仅付费可用的 AIGC 能力开放给免费用户：视频侧含 Seedance 2.5/2.0、Kling 3.0/2.5、Veo 3.1、Hailuo 2.3，图像侧含 GPT Image 2、Nano Banana Pro、Seedream 5.0 Lite，另带切片、去水印、智能字幕工具。",
+    "get": "注册免费档",
+    "url": "https://www.geelark.com"
   },
   {
-    "nm": "Novita AI 免费模型",
-    "pf": "Novita",
+    "nm": "GitHub Models",
+    "pf": "GitHub",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "FREE",
+    "ds": "GitHub Models 用 GitHub 账号即可免费调用 GPT-4o、Llama、DeepSeek 等 45+ 模型，OpenAI 兼容、带在线 Playground，适合原型验证与在 Actions 里跑轻量 AI 任务。",
+    "get": "GitHub 账号登录",
+    "url": "https://github.com/marketplace/models"
+  },
+  {
+    "nm": "GitHub Student Developer Pack",
+    "pf": "GitHub",
+    "tp": "编程",
+    "ic": "💻",
+    "end": "FREE",
+    "ds": "通过 GitHub Education 认证的学生免费拿 Copilot（无限代码补全 + 每月 200 AI Credits）、GitHub Pro、每月 3000 分钟 Actions、180 小时 Codespaces 和 20GB 存储。资格每月复检。",
+    "get": "education.github.com 提交学生证 / 学校邮箱认证，通过后自动开通",
+    "url": "https://education.github.com/pack"
+  },
+  {
+    "nm": "Google AI Studio",
+    "pf": "Google",
     "tp": "对话",
     "ic": "💬",
     "end": "FREE",
-    "ds": "Novita AI 长期挂 Qwen3.5/3.6-Plus、Bunny 等 0 价格开源模型，另送 $10 邀请返现 credits，OpenAI 兼容，适合横向对比。",
+    "ds": "Gemini 免费实验，API 易用，谷歌账号，适合原型。",
+    "get": "谷歌账号"
+  },
+  {
+    "nm": "Groq 免费层",
+    "pf": "Groq",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "Groq 自研 LPU 极速推理免费层，约 14400 请求/天、30 RPM，可跑 Llama 4 / Qwen3 / DeepSeek / Gemma 等开源模型，无需信用卡，输出速度是常见 GPU 方案数倍。",
     "get": "注册即用",
-    "url": "https://novita.ai",
-    "ad": "2026-08-30"
+    "url": "https://console.groq.com"
+  },
+  {
+    "nm": "HuggingFace",
+    "pf": "HF",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "模型社区免费，资源海量，账号登录，适合学习。",
+    "get": "账号"
+  },
+  {
+    "nm": "Kimi 网页",
+    "pf": "Kimi",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "长文免费对话，文档解析强，登录即用，适合研读。",
+    "get": "登录"
   },
   {
     "nm": "Kitbitz CC0 素材",
@@ -1152,6 +1000,75 @@
     "ad": "2026-08-30"
   },
   {
+    "nm": "LM Studio",
+    "pf": "LM Studio",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "本地推理免费，图形界面，下载即用，适合个人。",
+    "get": "下载"
+  },
+  {
+    "nm": "Mistral AI 免费层",
+    "pf": "Mistral",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "Mistral AI 免费层含 Le Chat 网页对话与 Codestral 代码模型 API，永久免费、免信用卡、OpenAI 兼容，欧洲合规，适合当备用模型后端做多源路由。",
+    "get": "注册即用",
+    "url": "https://console.mistral.ai"
+  },
+  {
+    "nm": "NVIDIA NIM 免费 API",
+    "pf": "NVIDIA",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "NVIDIA build.nvidia.com 提供 100+ 开源模型的免费 API credits，免信用卡、credits 不过期，OpenAI 兼容接口，覆盖对话、代码、视觉与语音模型，官方托管稳定。",
+    "get": "注册领 credits",
+    "url": "https://build.nvidia.com"
+  },
+  {
+    "nm": "Novita AI 免费模型",
+    "pf": "Novita",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "Novita AI 长期挂 Qwen3.5/3.6-Plus、Bunny 等 0 价格开源模型，另送 $10 邀请返现 credits，OpenAI 兼容，适合横向对比。",
+    "get": "注册即用",
+    "url": "https://novita.ai",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Ollama 本地",
+    "pf": "Ollama",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "本地模型运行，隐私安全，安装即用，适合离线。",
+    "get": "安装"
+  },
+  {
+    "nm": "OpenRouter 免费额",
+    "pf": "OpenRouter",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "OpenRouter 免费档聚合 25+ 开源模型（每模型约 50 次/天），免信用卡、OpenAI 兼容，一个 Key 横向切换多家模型，适合轻量集成与模型对比。",
+    "get": "注册即享",
+    "url": "https://openrouter.ai"
+  },
+  {
+    "nm": "Pollinations.AI 免 Key 生图",
+    "pf": "Pollinations",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "FREE",
+    "ds": "Pollinations.AI 免注册、免 API Key、免费的图像生成服务，直接拼 URL 就能出图，可嵌进网页或脚本批量生成，适合做占位图、封面与自动化流水线。",
+    "get": "直接调用 URL",
+    "url": "https://pollinations.ai"
+  },
+  {
     "nm": "Pullfrog 免费",
     "pf": "Pullfrog",
     "tp": "编程",
@@ -1161,5 +1078,148 @@
     "get": "注册即用",
     "url": "https://pullfrog.com",
     "ad": "2026-08-30"
+  },
+  {
+    "nm": "Recraft 免费绘图",
+    "pf": "Recraft",
+    "tp": "绘图",
+    "ic": "🎨",
+    "end": "FREE",
+    "ds": "AI 设计利器 Recraft 免费档每日自动发积分（约 30–50/天），栅格 1、矢量 2 积分/张，支持品牌风格集与图标/插画/海报，矢量可直接进 Figma。",
+    "get": "注册即用",
+    "url": "https://recraft.ai"
+  },
+  {
+    "nm": "SambaNova Cloud 免费推理",
+    "pf": "SambaNova",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "SambaNova Cloud 每模型每天 200,000 tokens 免费推理，覆盖 Llama / Qwen / DeepSeek 等开源模型，无需信用卡，注册即用。",
+    "get": "注册即用",
+    "url": "https://cloud.sambanova.ai",
+    "ad": "2026-08-30"
+  },
+  {
+    "nm": "Vercel AI Gateway",
+    "pf": "Vercel",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "Vercel AI Gateway 对未付费用户每 30 天发放 $5 Gateway credits，一个账号一套 API 即可路由到多家模型商，文本与图像生成都能覆盖（Imagen、FLUX、GPT Image、Recraft 等）。",
+    "get": "账号自动发放",
+    "url": "https://vercel.com/ai-gateway"
+  },
+  {
+    "nm": "元宝 App",
+    "pf": "腾讯",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "免费助手，多模型切换，下载即用，适合日常。",
+    "get": "下载"
+  },
+  {
+    "nm": "商汤 SenseNova Token Plan",
+    "pf": "商汤",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "商汤日日新 Token Plan 长期免费公测，注册即领不绑卡、每 5 小时刷新配额：sensenova-6.7-flash-lite 与 u1-fast 各 1500 次/5h、deepseek-v4-flash 150 次/5h（256K 上下文）。完全 OpenAI 兼容，单账号最多 20 个 Key。",
+    "get": "注册即领",
+    "url": "https://platform.sensenova.cn"
+  },
+  {
+    "nm": "文心一言基础",
+    "pf": "百度",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "免费对话档，中文优秀，注册即用，适合办公写作。",
+    "get": "注册"
+  },
+  {
+    "nm": "智谱 GLM-4.7-Flash 免费 API",
+    "pf": "智谱",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "智谱 BigModel 的 GLM-4.7-Flash 输入输出全部永久免费，200K 上下文、OpenAI 兼容、国内直连，支持函数调用与代码执行，是国内最稳的零成本模型后端之一。",
+    "get": "控制台建 Key",
+    "url": "https://bigmodel.cn"
+  },
+  {
+    "nm": "智谱清言基础",
+    "pf": "智谱",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "GLM 免费对话，工具调用稳，登录即用，适合开发。",
+    "get": "登录"
+  },
+  {
+    "nm": "百川基础",
+    "pf": "百川",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "免费对话，中文扎实，网页即用，适合验证。",
+    "get": "网页"
+  },
+  {
+    "nm": "百度智能云 苗得 MIAODA",
+    "pf": "百度",
+    "tp": "视频",
+    "ic": "🎬",
+    "end": "FREE",
+    "ds": "百度智能云「苗得 MIAODA」精选 Skill 每日免费额度：视频生成 1 次/天、图像生成 5 次/天、其他 200 次/天，每天 0 点重置不累计，国内直连，免费档优先扣减。",
+    "get": "控制台调用",
+    "url": "https://cloud.baidu.com/"
+  },
+  {
+    "nm": "讯飞星火基础",
+    "pf": "讯飞",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "免费对话，语音突出，注册即用，适合语音场景。",
+    "get": "注册"
+  },
+  {
+    "nm": "豆包 App",
+    "pf": "字节",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "免费 AI 助手，语音与图像齐全，下载即用，移动端友好。",
+    "get": "下载"
+  },
+  {
+    "nm": "通义千问网页",
+    "pf": "阿里",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "基础对话免费，多模态支持，登录即用，适合通用问答。",
+    "get": "登录"
+  },
+  {
+    "nm": "零一万物基础",
+    "pf": "零一",
+    "tp": "对话",
+    "ic": "💬",
+    "end": "FREE",
+    "ds": "Yi 免费对话，长上下文好，登录即用，适合问答。",
+    "get": "登录"
+  },
+  {
+    "nm": "魔搭社区",
+    "pf": "阿里",
+    "tp": "算力",
+    "ic": "🔋",
+    "end": "FREE",
+    "ds": "阿里魔搭 ModelScope 绑定阿里云账号后每日 2000 次免费 API 调用（单模型 500 次/日、每日重置），4000+ 开源模型可选，国内直连稳定。",
+    "get": "绑定后即用",
+    "url": "https://modelscope.cn"
   }
 ]
