@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>XIVIAI 免费资源导航站</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <style>
@@ -23,14 +26,22 @@
     --c-free:#16a571;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overscroll-behavior-y:none; background:var(--bg);}
   body{
     font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,Segoe UI,Roboto,sans-serif;
     background:var(--bg);color:var(--ink);margin:0;line-height:1.55;
     -webkit-font-smoothing:antialiased;padding-bottom:78px;
+    overscroll-behavior-y:none;
   }
   /* 动态背景层（最底层，铺满全屏） */
-  .bg-anim{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .bg-anim{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;
+    will-change:transform; animation:bgDrift 30s ease-in-out infinite alternate;}
+  @keyframes bgDrift{
+    0%{transform:scale(1) translate(0,0) rotate(0deg);}
+    50%{transform:scale(1.06) translate(-24px,12px) rotate(1.2deg);}
+    100%{transform:scale(1) translate(24px,-12px) rotate(-1deg);}
+  }
+  @media (prefers-reduced-motion: reduce){ .bg-anim{animation:none;} }
 
   /* 顶部栏 */
   .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
@@ -873,26 +884,9 @@ function renderReal(){
   /* 图标：先显示黑猫占位，再异步加载各官网 favicon */
   preloadFavicons();
 
-  /* 更新时间 */
-  const now = new Date();
-  document.getElementById("upd").textContent = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
-
-  const totop = document.getElementById("totop");
-  window.addEventListener("scroll",()=>{
-    totop.style.display = window.scrollY > 400 ? "flex" : "none";
-  });
-  totop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-
-  const tabs = [...tabbar.querySelectorAll(".tab")];
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        tabs.forEach(t=>t.classList.toggle("active", t.dataset.target===e.target.id));
-      }
-    });
-  },{rootMargin:"-45% 0px -50% 0px"});
-  CATS.forEach(c=>obs.observe(document.getElementById("sec-"+c.key)));
-  initSearch();
+  updateTime();
+  initStaticUI();
+  observeSections();
 }
 
 function initSearch(){
@@ -956,6 +950,35 @@ function initSearch(){
       firstMatch.scrollIntoView({behavior:"smooth", block:"center"});
     }
   });
+}
+
+function updateTime(){
+  const now = new Date();
+  document.getElementById("upd").textContent = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")} ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;
+}
+let __uiInited = false;
+function initStaticUI(){
+  if(__uiInited) return;
+  __uiInited = true;
+  const totop = document.getElementById("totop");
+  window.addEventListener("scroll",()=>{
+    totop.style.display = window.scrollY > 400 ? "flex" : "none";
+  });
+  totop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  initSearch();
+}
+let secObserver = null;
+function observeSections(){
+  if(secObserver) secObserver.disconnect();
+  const tabs = [...tabbar.querySelectorAll(".tab")];
+  secObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        tabs.forEach(t=>t.classList.toggle("active", t.dataset.target===e.target.id));
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  CATS.forEach(c=>secObserver.observe(document.getElementById("sec-"+c.key)));
 }
 
 /* 立即用内嵌兜底数据渲染：用户体感零等待，不再卡骨架屏
